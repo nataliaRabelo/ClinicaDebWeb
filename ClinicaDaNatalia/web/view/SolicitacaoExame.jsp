@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Solicitacao Exame</title>
+        <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
     </head>
     <body>
@@ -26,6 +27,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="idconsulta" class="form-label">idconsulta</label>
+                        <input type="text" name="idconsulta" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idconsulta" class="form-label">descricao</label>
                         <input type="text" name="idconsulta" class="form-control">
                     </div>
                     <div>

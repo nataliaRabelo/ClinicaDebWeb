@@ -11,10 +11,17 @@ package model;
  */
 public class Administrador {
     
-    private int id;
+    private int id = 0;
     private String nome;
     private String cpf;
     private String senha;
+    
+    public Administrador(String nome, String cpf, String senha){
+        this.id++;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
     
     public int getId(){
         return this.id;

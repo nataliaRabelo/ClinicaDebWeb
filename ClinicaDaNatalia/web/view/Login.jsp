@@ -13,13 +13,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Login</title>
+        <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
     </head>
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
                 <h3>Login</h3>
-                <form action="SolicitacaoExame" method="POST">
+                <form action="Login" method="POST">
                     <div class="mb-3">
                         <label for="email" class="form-label">email</label>
                         <input type="text" name="email" class="form-control">

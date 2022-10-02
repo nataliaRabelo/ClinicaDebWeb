@@ -1,10 +1,9 @@
-package controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Medico;
+import model.Administrador;
 
 /**
  *
  * @author natyn
  */
-@WebServlet(urlPatterns = {"/RegistroMedico"})
-public class RegistroMedico extends HttpServlet {
+@WebServlet(name = "RegistroAdministrador", urlPatterns = {"/RegistroAdministrador"})
+public class RegistroAdministrador extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,8 +34,8 @@ public class RegistroMedico extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroMedico.jsp");
-            rd.forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroAdministrador.jsp");
+        rd.forward(request, response);
     }
 
     /**
@@ -47,27 +46,31 @@ public class RegistroMedico extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
-        String crm = request.getParameter("crm");
-        String estadocrm = request.getParameter("estadocrm");
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
-        String autorizado = request.getParameter("autorizado");
-        String especialidade = request.getParameter("especialidade");
-        if(nome.isEmpty() || crm.isEmpty() || estadocrm.isEmpty() || cpf.isEmpty() || senha.isEmpty() || autorizado.isEmpty() || especialidade.isEmpty()){
-            RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroMedico.jsp");
+        if(nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()){
+            RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroAdministrador.jsp");
             rd.forward(request, response);
         } else {
-            Medico medico = new Medico(nome, Integer.valueOf(crm), estadocrm, cpf, senha, autorizado, especialidade);
-            request.setAttribute("medico", medico);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-            rd.forward(request, response);
+            Administrador adm = new Administrador(nome, cpf, senha);
+            request.setAttribute("administrador", adm);
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
             
         }
-
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }
