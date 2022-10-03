@@ -19,7 +19,7 @@
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
                 <h3>Registro de Médico</h3>
-                <form action="AreaDoMedico" method="POST">
+                <form target="_blank" method="POST" action="AreaDoMedico" >
                     <div class="mb-3">
                         <label for="nome" class="form-label">nome</label>
                         <input type="text" name="nome" class="form-control">
@@ -48,7 +48,8 @@
                         <input type="text" name="especialidade" class="form-control">
                     </div>
                     <div>
-                        <input type="submit" value="Enviar" class="btn btn-primary">
+                        <%--<input onclick="window.location.href = 'http://locallhost:8080/ClinicaDaNatalia/AreaDoMedico';" type="submit" value="Submit request" />--%>
+                        <input type="submit" value="Submit" name="submit">
                         <%--<a href="/ClinicaDaNatalia/AreaDoMedico"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;"></button></a>--%>
                     </div>
                 </form>

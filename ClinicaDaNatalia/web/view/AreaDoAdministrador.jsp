@@ -15,14 +15,14 @@
         <title>Área do Administrador</title>
         <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
-    <div align="center"><font face="Trebuchet MS" color="#00000"><h1 class="display-1">Bem-vindo, paciente. O que deseja fazer?</h1></font></div>
+    <div align="center"><font face="Trebuchet MS" color="#00000"><h1 class="display-1">Bem-vindo, administrador. O que deseja fazer?</h1></font></div>
         <div align="center" class="span3">
-              <a href="/ClinicaDaNatalia/MarcacaoConsulta"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Marcar consulta</button></a>
+              <a href="/ClinicaDaNatalia/Registro"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Registrar usuário</button></a>
          </div>
     </head>
     <body>
+        <%-- 
         <div class="container">
-            <jsp:include page="AreaDoMedico.jsp" />
             <div class="mt-5">
                 <%
                     Administrador paciente = (Administrador) request.getAttribute("administrador");
@@ -33,5 +33,6 @@
                 <h3>Senha: <%= paciente.getSenha()%> </h1>
             </div>
         </div>
+        --%>
     </body>
 </html>

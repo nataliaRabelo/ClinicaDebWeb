@@ -21,6 +21,7 @@
          </div>
     </head>
     <body>
+        <%--
         <div class="container">
             <jsp:include page="AreaDoMedico.jsp" />
             <div class="mt-5">
@@ -36,5 +37,6 @@
                 <h3>Especialidade: <%= paciente.getIdtipoPlano()%> </h1>
             </div>
         </div>
+        --%>
     </body>
 </html>

@@ -20,7 +20,7 @@ public class Medico {
     private String autorizado;
     private int idespecialidade;
     
-    public Medico(String nome, int crm, String estadocrm, String cpf, String senha, String autorizado, String especialidade){
+    public Medico(String nome, int crm, String estadocrm, String cpf, String senha, String autorizado){
         this.id++;
         this.nome = nome;
         this.crm = crm;
@@ -28,17 +28,7 @@ public class Medico {
         this.cpf = cpf;
         this.senha = senha;
         this.autorizado = autorizado;
-        if(especialidade.equals("CARDIOLOGIA")){
-            this.idespecialidade = 1;
-        }else if(especialidade.equals("NEUROLOGIA")){
-            this.idespecialidade = 2;
-        }else if(especialidade.equals("GASTROLOGISTA")){
-            this.idespecialidade = 3;
-        }else if(especialidade.equals("PNEUMOLOGIA")){
-            this.idespecialidade = 4;
-        }else{
-            this.idespecialidade = 0;
-        }
+        this.idespecialidade = 0;
     }
     
     public int getId(){

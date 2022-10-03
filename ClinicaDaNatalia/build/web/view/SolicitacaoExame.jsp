@@ -19,7 +19,7 @@
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
-                <h3>Marcar consulta</h3>
+                <h3>Solicitar exame</h3>
                 <form action="SolicitacaoExame" method="POST">
                     <div class="mb-3">
                         <label for="idtipoexame" class="form-label">idtipoexame</label>
