@@ -22,6 +22,8 @@
               <a href="/ClinicaDaNatalia/RegistroMedico"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Médico</button></a>
               <a href="/ClinicaDaNatalia/RegistroPaciente"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Paciente</button></a>
               <a href="/ClinicaDaNatalia/RegistroAdministrador"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Administrador</button></a>
+              <a href="/ClinicaDaNatalia/RegistroEspecialidade"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Especialidade</button></a>
+              <a href="/ClinicaDaNatalia/RegistroConvenio"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Convenio</button></a>
          </div>
                 <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
             <style>
