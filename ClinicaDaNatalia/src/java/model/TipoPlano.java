@@ -11,15 +11,28 @@ package model;
  */
 public class TipoPlano {
     
-    private int id;
+    private String id;
     private String descricao;
+
+    public TipoPlano(String id, String descricao) {
+        this.id = id;
+        this.descricao = descricao; 
+    }
     
-    public int getId(){
+    public String getId(){
         return this.id;
     }
     
     public String getDescricao(){
         return this.descricao;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
 }

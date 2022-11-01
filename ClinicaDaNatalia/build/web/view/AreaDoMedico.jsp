@@ -4,42 +4,33 @@
     Author     : natyn
 --%>
 
-<%--<%@page contentType="text/html" pageEncoding="UTF-8" import="model.Medico" %>--%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="#">
-        <title>Área do médico</title>
-        <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
-        <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
-    <div align="center"><font face="Trebuchet MS" color="#00000"><h1 class="display-1">Bem-vindo, médico. O que deseja fazer?</h1></font></div>
-        <div align="center" class="span3">
-              <a href="/ClinicaDaNatalia/SolicitacaoExame"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Solicitar exame</button></a>
-         </div>
-    </head>
-    <body>
-        <%--
-        <div class="container">
-            <div class="mt-5">
-                
+<%@page contentType="text/html" pageEncoding="UTF-8" import="model.Medico" %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.jsp">Area do Medico</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+
+
                 <%
-                    Medico medico = (Medico) request.getAttribute("medico");
-                %>
-                
-                <h1>Dados recebidos do Medico</h1>
-                <h3>Nome: <%= medico.getNome() %></h3>
-                <h3>CRM: <%= medico.getCrm()%> </h3>
-                <h3>Estado do CRM: <%= medico.getEstadoCrm()%> </h3>
-                <h3>CPF: <%= medico.getCpf()%> </h3>
-                <h3>Senha: <%= medico.getSenha()%> </h3>
-                <h3>Autorizado: <%= medico.getAutorizado()%> </h3>
-                <h3>Especialidade: <%= medico.getIdEspecialidade()%> </h3>
+                    // testar se está logado
+                    HttpSession sessao = request.getSession(false);
+                    if (sessao != null) {
+                        Medico usuarioLogado = (Medico) session.getAttribute("medico");
+                        if (usuarioLogado != null) { %>
+                            <a class="nav-link" href="SolicitacaoExame">Gerenciar Usuários</a>
+                            <a class="nav-link" href="logOut">Logout</a>
+                <%  } else { %>
+                            <a class="nav-link" href="Login.jsp">Login</a>
+                <%    }
+                    }%>
+
+
+
             </div>
         </div>
-                --%>
-    </body>
-</html>
+    </div>
+</nav>

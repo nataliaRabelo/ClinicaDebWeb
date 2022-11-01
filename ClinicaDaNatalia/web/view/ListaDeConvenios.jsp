@@ -1,39 +1,40 @@
-<%-- 
-    Document   : ListaDeConvenios
-    Created on : 02/10/2022, 17:26:35
-    Author     : natyn
---%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.TipoPlano"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Convênios</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="#">
+        <title>Lista de Comentários - Login com DAO</title>
+        <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
     </head>
     <body>
-        <div align="center"><font face="Trebuchet MS" color="#00000"><h1 class="display-1">Convênios</h1></font></div>
-        <table align="center" class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col"> </th>
-      <th scope="col"> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Unimed</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Amil</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Sulamérica</td>
-    </tr>
-  </tbody>
-</table>
+        <div class="container">
+            <jsp:include page="menu.jsp" />
+            <div class="mt-5">
+
+                <h1>Área Pública</h1>
+                <h2>Lista de Convênios</h2>
+                <%
+                    ArrayList<TipoPlano> listaDePlanos = (ArrayList<TipoPlano>) request.getAttribute("listaDePlanos");
+
+                    for (TipoPlano tipoPlano : listaDePlanos) {
+                        String id = tipoPlano.getId();
+                        String data = tipoPlano.getDescricao();
+
+                %>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text"><%=tipoPlano.getDescricao()%></p>
+                    </div>
+                </div>
+                <%     }%>
+
+            </div>
+        </div>
     </body>
 </html>

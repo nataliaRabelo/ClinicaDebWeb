@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.AdministradorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Administrador;
+import model.Usuario;
 
 /**
  *
@@ -49,28 +52,30 @@ public class RegistroAdministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // pegando os parâmetros do request
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
-        if(nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()){
-            RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroAdministrador.jsp");
-            rd.forward(request, response);
-        } else {
-            Administrador adm = new Administrador(nome, cpf, senha);
-            request.setAttribute("administrador", adm);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
-            
+        Usuario usuario = new Usuario(nome, cpf, senha);
+        AdministradorDAO usuarioDAO = new AdministradorDAO();
+        try {
+            usuarioDAO.Inserir(usuario);
+        } catch (Exception ex) {
+            throw new RuntimeException("Falha na query para Logar");
         }
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        if (usuario != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario", usuario);
+            RequestDispatcher rd = request.getRequestDispatcher("/AreaDoAdministrador.jsp");
+            rd.forward(request, response);
+
+        } else {
+            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+            RequestDispatcher rd = request.getRequestDispatcher("/RegistroAdministrador.jsp");
+            rd.forward(request, response);
+        }
+
+    }
 
 }

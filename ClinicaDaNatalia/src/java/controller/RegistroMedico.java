@@ -6,6 +6,8 @@ package controller;
  * and open the template in the editor.
  */
 
+import DAO.AdministradorDAO;
+import DAO.MedicoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,7 +16,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Medico;
+import model.Usuario;
 
 /**
  *
@@ -51,23 +55,41 @@ public class RegistroMedico extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String nome = request.getParameter("nome");
-        String crm = request.getParameter("crm");
-        String estadocrm = request.getParameter("estadocrm");
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
+        String crm = request.getParameter("crm");
+        String estadocrm = request.getParameter("estadocrm");
         String autorizado = request.getParameter("autorizado");
-        if(nome == null || crm == null || estadocrm == null || cpf == null || senha == null || autorizado == null){
-            Medico medico = new Medico("", 0, "", "", "", "");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+        String idespecialidade = request.getParameter("idespecialidade");
+        if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
+            // dados não foram preenchidos retorna ao formulário
+            request.setAttribute("msgError", "Usuário e/ou senha incorreto");
+            RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
             rd.forward(request, response);
         } else {
-            Medico medico = new Medico(nome, Integer.valueOf(crm), estadocrm, cpf, senha, autorizado);
-            request.setAttribute("medico", medico);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-            doGet(request,response);
-            
-        }
 
+            Medico usuario = new Medico(nome, cpf, senha, crm, estadocrm, autorizado, idespecialidade);
+            MedicoDAO medicoDAO = new MedicoDAO();
+            try {
+                medicoDAO.Inserir(usuario);
+            } catch (Exception ex) {
+                throw new RuntimeException("Falha na query para Logar");
+            }
+
+            if (usuario != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("usuario", usuario);
+                RequestDispatcher rd = request.getRequestDispatcher("/AreaDoMedico.jsp");
+                rd.forward(request, response);
+
+            } else {
+                request.setAttribute("msgError", "Usuário e/ou senha incorreto");
+                RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+                rd.forward(request, response);
+            }
+
+        }
     }
 }

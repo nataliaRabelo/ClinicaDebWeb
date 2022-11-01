@@ -5,24 +5,23 @@
  */
 package controller;
 
-import DAO.TipoPlanoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.TipoPlano;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author natyn
  */
-@WebServlet(name = "ListaDeConvenios", urlPatterns = {"/ListaDeConvenios"})
-public class ListaDeConvenios extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class Logout extends HttpServlet {
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,18 +35,10 @@ public class ListaDeConvenios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
-            try {
-                ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
-                request.setAttribute("listaDePlanos", listaDePlanos);
-                RequestDispatcher rd = request.getRequestDispatcher("/ListaDeConvenios.jsp");
-                rd.forward(request, response);
-                
-                
-            } catch (IOException | ServletException ex) {
-                throw new RuntimeException("Falha na query ao listar convenios.");
-            }
+            HttpSession session = request.getSession();
+            session.invalidate();
+            RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+            rd.forward(request, response);
     }
-
 
 }
