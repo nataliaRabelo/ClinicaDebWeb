@@ -17,19 +17,9 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="Menu.jsp" />
             <div class="col-sm-6 offset-3 mt-5">
-
                 <h3>Login</h3>
-
-                <%
-                    String msgError = (String) request.getAttribute("msgError");
-                    if ((msgError != null) && (!msgError.isEmpty())) {%>
-                        <div class="alert alert-danger" role="alert">
-                           <%= msgError %>
-                        </div>
-                <% }%>
-                <form action="efetuarLogin" method="POST">
+                <form action="Login" method="POST">
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" name="cpf" value="249.252.810-38" class="form-control">
