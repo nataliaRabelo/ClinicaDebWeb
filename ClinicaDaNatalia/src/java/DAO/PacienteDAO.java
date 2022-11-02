@@ -21,13 +21,13 @@ public class PacienteDAO {
         public void Inserir(Paciente usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO pacientes (nome, cpf, senha, autorizado, tipoplano)"
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO paciente (nome, cpf, senha, idtipoplano)"
                     + " VALUES (?,?,?,?)");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
             sql.setString(3, usuario.getSenha());
-            sql.setString(4, usuario.getAutorizado());
-            sql.setString(5, usuario.getIdtipoPlano());
+            sql.setInt(4, Integer.valueOf(usuario.getIdtipoPlano()));
+            System.out.println(sql);
             sql.executeUpdate();
 
         } catch (SQLException e) {

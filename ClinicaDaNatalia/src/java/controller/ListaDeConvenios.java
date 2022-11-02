@@ -40,7 +40,7 @@ public class ListaDeConvenios extends HttpServlet {
             try {
                 ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
                 request.setAttribute("listaDePlanos", listaDePlanos);
-                RequestDispatcher rd = request.getRequestDispatcher("/ListaDeConvenios.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConvenios.jsp");
                 rd.forward(request, response);
                 
                 

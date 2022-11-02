@@ -4,6 +4,8 @@
     Author     : natyn
 --%>
 
+<%@page import="model.TipoPlano"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -34,9 +36,19 @@
                         <input type="text" name="senha" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="idtipoplano" class="form-label" color="#FFFAFA">id plano</label>
-                        <input type="text" name="plano de saúde" class="form-control">
-                        <font face="Trebuchet MS" color="#FFFAFA"><h7>Consulte lista de convênios na home page para obter o id do seu plano!</h7></font>
+                        <label for="idtipoplano" class="form-label" color="#FFFAFA">convênio</label>
+                        <select class="form-select d-block w-100 form-control" id="idtipoplano" name="idtipoplano"required>
+                        <option value="">Escolha o plano.</option>
+                        <%
+                        ArrayList<TipoPlano> listaDePlanos = (ArrayList<TipoPlano>) request.getAttribute("listaDePlanos");
+
+                        for (TipoPlano tipoPlano : listaDePlanos) {
+                            out.println("<option value= '"+tipoPlano.getId()+"'>");
+                            out.println(tipoPlano.getDescricao());
+                            out.println("</option>");
+                        }
+%>
+                    </select>
                     </div>
                     <div>
                         <input type="submit" value="Enviar" class="btn-primary">

@@ -8,8 +8,10 @@ package controller;
 
 import DAO.AdministradorDAO;
 import DAO.PacienteDAO;
+import DAO.TipoPlanoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Paciente;
+import model.TipoPlano;
 import model.Usuario;
 
 /**
@@ -30,6 +33,9 @@ public class RegistroPaciente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
+            ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
+            request.setAttribute("listaDePlanos", listaDePlanos);
             RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroPaciente.jsp");
             rd.forward(request, response);
     }
@@ -42,10 +48,11 @@ public class RegistroPaciente extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String idtipoplano = request.getParameter("idtipoplano");
+        System.out.println(request.getParameter("idtipoplano"));
         Paciente usuario = new Paciente(nome, cpf, senha, idtipoplano);
-        PacienteDAO usuarioDAO = new PacienteDAO();
+        PacienteDAO pacienteDAO = new PacienteDAO();
         try {
-            usuarioDAO.Inserir(usuario);
+            pacienteDAO.Inserir(usuario);
         } catch (Exception ex) {
             throw new RuntimeException("Falha na query para Logar");
         }
