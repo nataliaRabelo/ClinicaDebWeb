@@ -78,7 +78,7 @@ public class Login extends HttpServlet {
                 //Abre a conexão com o banco de dados via JDBC
                 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", "");
  
-                String sqlString = "SELECT *FROM (SELECT 'X' AS tipo,x.id as id, x.cpf AS cpf, x.senha AS senha FROM medico x UNION ALL SELECT 'Y' AS tipo,y.id as id, x.cpf AS cpf, x.senha AS senha FROM paciente x UNION ALL SELECT 'Z' AS tipo,z.id as id, z.cpf AS cpf, z.senha AS senha FROM administrador z) w WHERE cpf=? and senha =? LIMIT 1";
+                String sqlString = "SELECT * FROM (SELECT a.nome AS nome, a.id AS id, a.cpf AS cpf, a.senha AS senha, NULL AS idtipoplano, NULL AS autorizado, NULL AS idespecialidade, NULL AS estadocrm, NULL AS crm FROM administrador a UNION ALL SELECT p.nome AS nome, p.id AS id, p.cpf AS cpf, p.senha AS senha, p.idtipoplano AS idtipoplano, p.autorizado AS autorizado, NULL AS idespecialidade, NULL AS estadocrm, NULL AS crm FROM paciente p UNION ALL SELECT m.nome AS nome, m.id AS id, m.cpf AS cpf, m.senha AS senha, NULL AS idtipoplano, m.autorizado AS autorizado, m.idespecialidade AS idespecialidade, m.estadocrm AS estadocrm, m.crm AS crm FROM medico m) g WHERE cpf=? and senha =? LIMIT 1";
                 PreparedStatement sql = conexao.prepareStatement(sqlString);
                 sql.setString(1, cpf_user);
                 sql.setString(2, senha_user);

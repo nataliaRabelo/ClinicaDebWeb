@@ -105,7 +105,7 @@ public class PacienteDAO {
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    Paciente usuario = new Paciente(resultado.getString("NOME"),
+                    Paciente usuario = new Paciente(resultado.getString("NOME"), resultado.getString("NOME"),
                             resultado.getString("CPF"),
                             resultado.getString("SENHA"), resultado.getString("AUTORIZADO"), resultado.getString("IDTIPOPLANO"));
                     usuario.setId(Integer.parseInt(resultado.getString("id")));

@@ -41,9 +41,8 @@ public class RegistroPaciente extends HttpServlet {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
-        String autorizado = request.getParameter("autorizado");
         String idtipoplano = request.getParameter("idtipoplano");
-        Paciente usuario = new Paciente(nome, cpf, senha, autorizado, idtipoplano);
+        Paciente usuario = new Paciente(nome, cpf, senha, idtipoplano);
         PacienteDAO usuarioDAO = new PacienteDAO();
         try {
             usuarioDAO.Inserir(usuario);

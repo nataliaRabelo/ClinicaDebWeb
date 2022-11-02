@@ -85,7 +85,7 @@ public class TipoPlanoDAO {
         ArrayList<TipoPlano> planos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Comentarios order by data";
+            String selectSQL = "SELECT * FROM tipoplano";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

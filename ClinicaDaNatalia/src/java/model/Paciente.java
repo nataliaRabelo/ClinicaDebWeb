@@ -20,9 +20,18 @@ public class Paciente extends Usuario{
         this.idtipoplano = tipoplano;
     }
     
-    public Paciente(String nome, String cpf, String senha, String autorizado, String tipoplano){
+    /**
+     * Construtor utilizado para o primeiro registro do paciente.
+     * Este registro precisa de autorização do administrador para prosseguir com certos procedimentos. 
+     * @param nome do usuário.
+     * @param cpf do usuário.
+     * @param senha do usuário.
+     * @param autorizado status de autorizado a acessar serviços da clínica.
+     * @param tipoplano id do plano de saúde utilizado.
+     */
+    public Paciente(String nome, String cpf, String senha, String tipoplano){
         super(nome, cpf, senha);
-        this.autorizado = autorizado;
+        this.autorizado = "N";
         this.idtipoplano = tipoplano;
     }
     

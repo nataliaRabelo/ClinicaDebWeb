@@ -14,7 +14,6 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu.jsp" />
             <div class="mt-5">
 
                 <h1>Área Pública</h1>
