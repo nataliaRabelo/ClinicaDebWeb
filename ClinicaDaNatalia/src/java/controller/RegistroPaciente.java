@@ -60,12 +60,12 @@ public class RegistroPaciente extends HttpServlet {
         if (usuario != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
-            RequestDispatcher rd = request.getRequestDispatcher("/AreaDoAdministrador.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
             rd.forward(request, response);
 
         } else {
             request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-            RequestDispatcher rd = request.getRequestDispatcher("/RegistroAdministrador.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroPaciente.jsp");
             rd.forward(request, response);
         }
     }

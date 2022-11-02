@@ -40,7 +40,7 @@ public class PacienteDAO {
     public Usuario get(Paciente usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM pacientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(usuario.getId()));
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
@@ -65,7 +65,7 @@ public class PacienteDAO {
     public void Alterar(Paciente usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE pacientes SET nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE paciente SET nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ?  WHERE ID = ? ");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
             sql.setString(3, usuario.getSenha());
@@ -84,7 +84,7 @@ public class PacienteDAO {
     public void Excluir(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM pacientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM paciente WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(usuario.getId()));
             sql.executeUpdate();
 
@@ -113,7 +113,7 @@ public class PacienteDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (ListaDeUsuarios) incorreta");
+            throw new RuntimeException("Query de select (ListaDePacientes) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -123,7 +123,7 @@ public class PacienteDAO {
     public Usuario Logar(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM administradores WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, usuario.getCpf());
             sql.setString(2, usuario.getSenha());
             ResultSet resultado = sql.executeQuery();

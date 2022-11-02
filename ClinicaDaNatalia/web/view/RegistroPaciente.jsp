@@ -22,7 +22,7 @@
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
                 <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Registro de paciente</h1></font></div>
-                <form action="AreaDoPaciente" method="GET">
+                <form action="RegistroPaciente" method="POST">
                     <div class="mb-3">
                         <label for="nome" class="form-label" color="#FFFAFA">nome</label>
                         <input type="text" name="nome" class="form-control">

@@ -5,9 +5,9 @@
  */
 package controller;
 
+import DAO.ConsultaDAO;
 import DAO.EspecialidadeDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,33 +15,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Especialidade;
+import model.Consulta;
 
 /**
  *
  * @author natyn
  */
-@WebServlet(name = "ListaDeEspecialidades", urlPatterns = {"/ListaDeEspecialidades"})
-public class ListaDeEspecialidades extends HttpServlet {
+@WebServlet(name = "ListaDeConsultas", urlPatterns = {"/ListaDeConsultas"})
+public class ListaDeConsultas extends HttpServlet {
 
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+                    ConsultaDAO consultaDAO = new ConsultaDAO();
             try {
-                ArrayList<Especialidade> listaDeEspecialidades = especialidadeDAO.ListaDeEspecialidades();
-                request.setAttribute("listaDeEspecialidades", listaDeEspecialidades);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeEspecialidades.jsp");
+                ArrayList<Consulta> listaDeConsultas = consultaDAO.ListaDeConsultas();
+                request.setAttribute("listaDeConsultas", listaDeConsultas);
+                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");
                 rd.forward(request, response);
                 
                 
@@ -49,4 +39,5 @@ public class ListaDeEspecialidades extends HttpServlet {
                 throw new RuntimeException("Falha na query ao listar convenios.");
             }
     }
+
 }

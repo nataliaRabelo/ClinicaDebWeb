@@ -17,7 +17,7 @@ import model.TipoPlano;
  */
 public class TipoPlanoDAO {
     
-        public void Inserir(TipoPlano tipoPlano) throws Exception {
+    public void Inserir(TipoPlano tipoPlano) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Comentarios (cometario, data, idusuario) VALUES (?,?,?)");

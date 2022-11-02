@@ -111,7 +111,7 @@ public class Login extends HttpServlet {
 
                 } else {
                     request.setAttribute("msgError", "Usuário e/ou senha incorreto");
-                    RequestDispatcher rd = request.getRequestDispatcher("/AutenticaLogin");
+                    RequestDispatcher rd = request.getRequestDispatcher("/Login");
                     rd.forward(request, response);
                 }
 

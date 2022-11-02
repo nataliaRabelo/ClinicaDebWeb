@@ -123,7 +123,7 @@ public class MedicoDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (ListaDeUsuarios) incorreta");
+            throw new RuntimeException("Query de select (ListaDeMedicos) incorreta");
         } finally {
             conexao.closeConexao();
         }

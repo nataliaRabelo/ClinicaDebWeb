@@ -13,18 +13,27 @@ import java.time.LocalDateTime;
  */
 public class Consulta {
     
-    private int id;
-    private LocalDateTime data;
+    private String id;
+    private String data;
     private String descricao;
     private String realizada;
-    private int idmedico;
-    private int idpaciente;
+    private String idmedico;
+    private String idpaciente;
     
-    public int getId(){
+    public Consulta(String id, String data, String descricao, String realizada, String idmedico, String idpaciente){
+        this.id = id;
+        this.data = data;
+        this.descricao = descricao;
+        this.descricao = realizada;
+        this.idmedico = idmedico;
+        this.idpaciente = idpaciente;
+    }
+    
+    public String getId(){
         return this.id;
     }
     
-    public LocalDateTime getData(){
+    public String getData(){
         return this.data;
     }
     
@@ -36,11 +45,35 @@ public class Consulta {
         return this.realizada;
     }
     
-    public int getIdMedico(){
+    public String getIdMedico(){
         return this.idmedico;
     }
         
-    public int getIdPaciente(){
+    public String getIdPaciente(){
         return this.idmedico;
+    }
+    
+    public void setId(String id){
+        this.id = id;
+    }
+    
+    public void setData(String data){
+        this.data = data;
+    }
+    
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
+    }
+    
+    public void setRealizada(String realizada){
+        this.realizada = realizada;
+    }
+    
+    public void setIdMedico(String idmedico){
+        this.idmedico = idmedico;
+    }
+        
+    public void setIdPaciente(String idpaciente){
+        this.idpaciente = idpaciente;
     }
 }

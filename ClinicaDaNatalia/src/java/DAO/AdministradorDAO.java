@@ -20,7 +20,7 @@ public class AdministradorDAO {
         public void Inserir(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO administradores (nome, cpf, senha)"
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO administrador (nome, cpf, senha)"
                     + " VALUES (?,?,?,?)");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
@@ -37,7 +37,7 @@ public class AdministradorDAO {
     public Usuario get(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM administradores WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM administrador WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(usuario.getId()));
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
@@ -60,7 +60,7 @@ public class AdministradorDAO {
     public void Alterar(Usuario Usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE administradores SET nome = ?, cpf = ?, senha = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE administrador SET nome = ?, cpf = ?, senha = ?  WHERE ID = ? ");
             sql.setString(1, Usuario.getNome());
             sql.setString(2, Usuario.getCpf());
             sql.setString(3, Usuario.getSenha());
@@ -77,7 +77,7 @@ public class AdministradorDAO {
     public void Excluir(Usuario Usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM administradores WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM administrador WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(Usuario.getId()));
             sql.executeUpdate();
 
@@ -92,7 +92,7 @@ public class AdministradorDAO {
         ArrayList<Usuario> meusUsuarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM administradores order by nome";
+            String selectSQL = "SELECT * FROM administrador order by nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -106,7 +106,7 @@ public class AdministradorDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (ListaDeUsuarios) incorreta");
+            throw new RuntimeException("Query de select (ListaDeAdministradores) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -116,7 +116,7 @@ public class AdministradorDAO {
     public Usuario Logar(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM administradores WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM administrador WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, usuario.getCpf());
             sql.setString(2, usuario.getSenha());
             ResultSet resultado = sql.executeQuery();
