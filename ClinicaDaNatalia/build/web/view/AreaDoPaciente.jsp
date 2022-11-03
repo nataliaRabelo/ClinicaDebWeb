@@ -22,22 +22,5 @@
          </div>
     </head>
     <body>
-        <%--
-        <div class="container">
-            <jsp:include page="AreaDoMedico.jsp" />
-            <div class="mt-5">
-                <%
-                    Paciente paciente = (Paciente) request.getAttribute("paciente");
-                %>
-                
-                <h1>Dados recebidos do Paciente</h1>
-                <h3>Nome: <%= paciente.getNome() %></h1>
-                <h3>CPF: <%= paciente.getCpf()%> </h1>
-                <h3>Senha: <%= paciente.getSenha()%> </h1>
-                <h3>Autorizado: <%= paciente.getAutorizado()%> </h1>
-                <h3>Especialidade: <%= paciente.getIdtipoPlano()%> </h1>
-            </div>
-        </div>
-        --%>
     </body>
 </html>

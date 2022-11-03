@@ -17,18 +17,6 @@
         <div class="container">
             <div class="mt-5">
                 <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h2>Lista de Consultas</h2></div>
-                <%
-                    ArrayList<Consulta> listaDeConsultas = (ArrayList<Consulta>) request.getAttribute("listaDeConsultas");
-
-                    for (Consulta consulta : listaDeConsultas) {
-                        String id = consulta.getId();
-                        String data = consulta.getData();
-                        String descricao = consulta.getDescricao();
-                        String realizada = consulta.getRealizada();
-                        String idmedico = consulta.getIdMedico();
-                        String idpaciente = consulta.getIdPaciente();
-
-                %>
 <div class="table table-hover">
         <table class="table">
             <thead>
@@ -47,19 +35,36 @@
                     </th>
                 </tr>
             </thead>
+                <%
+                    ArrayList<Consulta> listaDeConsultas = (ArrayList<Consulta>) request.getAttribute("listaDeConsultas");
+                    if(listaDeConsultas.isEmpty()){
+                        out.print("<h1>Sua lista de consultas está vazia! D:</h1>");
+                    }
+                    for (Consulta consulta : listaDeConsultas) {
+                        String id = consulta.getId();
+                        String data = consulta.getData();
+                        String descricao = consulta.getDescricao();
+                        String realizada = consulta.getRealizada();
+                        String idmedico = consulta.getIdMedico();
+                        String idpaciente = consulta.getIdPaciente();
+
+                %>
             <tbody>
                     <tr>
                         <td>
                             <%= data%>
                         </td>
                         <td>
+                            <%= realizada%>                         
+                        </td>
+                        <td>
                             <%= descricao%>
                         </td>
                         <td>
-                            <%= realizada%>
+                            <%= idmedico%>
                         </td>
                         <td>
-                            <%= idmedico%>
+                            <a href="/ClinicaDaNatalia/"><button style="background: #fff; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Voltar</button></a>
                         </td>
                     </tr>
             </tbody>

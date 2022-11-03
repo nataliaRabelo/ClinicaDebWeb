@@ -21,8 +21,8 @@ public class MedicoDAO {
             public void Inserir(Medico usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO medicos (nome, cpf, senha, crm, estadocrm, autorizado, idespecialidade)"
-                    + " VALUES (?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO medico (nome, cpf, senha, crm, estadocrm, autorizado, idespecialidade)"
+                    + " VALUES (?,?,?,?,?,?,?,?)");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
             sql.setString(3, usuario.getSenha());
@@ -42,7 +42,7 @@ public class MedicoDAO {
     public Usuario get(Medico usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medicos WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medico WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(usuario.getId()));
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
@@ -69,7 +69,7 @@ public class MedicoDAO {
     public void Alterar(Medico usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medicos SET nome = ?, cpf = ?, senha = ?, crm = ?, estadocrm = ?, autorizado = ?, idespecialidade = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medico SET nome = ?, cpf = ?, senha = ?, crm = ?, estadocrm = ?, autorizado = ?, idespecialidade = ?  WHERE ID = ? ");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
             sql.setString(3, usuario.getSenha());
@@ -90,7 +90,7 @@ public class MedicoDAO {
     public void Excluir(Medico usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM medicos WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM medico WHERE ID = ? ");
             sql.setInt(1, Integer.valueOf(usuario.getId()));
             sql.executeUpdate();
 
@@ -105,7 +105,7 @@ public class MedicoDAO {
         ArrayList<Usuario> meusUsuarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM medicos order by nome";
+            String selectSQL = "SELECT * FROM medico order by nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -133,7 +133,7 @@ public class MedicoDAO {
     public Usuario Logar(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medicos WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medico WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, usuario.getCpf());
             sql.setString(2, usuario.getSenha());
             ResultSet resultado = sql.executeQuery();

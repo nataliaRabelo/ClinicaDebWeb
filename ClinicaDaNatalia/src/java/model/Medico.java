@@ -5,6 +5,9 @@
  */
 package model;
 
+import DAO.EspecialidadeDAO;
+import java.util.ArrayList;
+
 /**
  *
  * @author natyn
@@ -61,6 +64,17 @@ public class Medico extends Usuario{
 
     public void setIdEspecialidade(String idespecialidade) {
         this.idespecialidade = idespecialidade;
+    }
+    
+    public String getNomeEspecialidade(String idespecialidade){
+        EspecialidadeDAO especialidadeDao = new EspecialidadeDAO(); 
+        ArrayList<Especialidade> especialidades = especialidadeDao.ListaDeEspecialidades();
+        for(Especialidade especialidade : especialidades){
+            if(especialidade.getId().equals(idespecialidade)){
+                return especialidade.getDescricao();
+            }
+        }
+        return null;
     }
     
 }

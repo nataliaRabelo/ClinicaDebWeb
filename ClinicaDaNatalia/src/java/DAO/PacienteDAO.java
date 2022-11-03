@@ -99,7 +99,7 @@ public class PacienteDAO {
         ArrayList<Paciente> meusUsuarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM administradores order by nome";
+            String selectSQL = "SELECT * FROM paciente order by nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

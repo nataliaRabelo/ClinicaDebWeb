@@ -6,14 +6,29 @@ package controller;
  * and open the template in the editor.
  */
 
+import DAO.AdministradorDAO;
+import DAO.ConsultaDAO;
+import DAO.MedicoDAO;
+import DAO.PacienteDAO;
+import DAO.TipoPlanoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Medico;
+import model.Paciente;
+import model.TipoPlano;
+import model.Usuario;
+import java.text.SimpleDateFormat;
+import model.Consulta;
+import model.UsuarioLogado;
 
 /**
  *
@@ -35,6 +50,9 @@ public class MarcacaoConsulta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        MedicoDAO medicoDAO = new MedicoDAO();
+        ArrayList<Usuario> listaDeMedicos = medicoDAO.ListaDeMedicos();
+        request.setAttribute("listaDeMedicos", listaDeMedicos);
         RequestDispatcher rd = request.getRequestDispatcher("/view/MarcacaoConsulta.jsp");
         rd.forward(request, response);
     }
@@ -50,6 +68,29 @@ public class MarcacaoConsulta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String data = request.getParameter("data");
+        String hora = request.getParameter("hora");
+        String descricao = request.getParameter("descricao");
+        String idmedico = request.getParameter("idmedico");
+        String dataInteira = data + " " + hora;
+        Consulta consulta = new Consulta(dataInteira, descricao, idmedico, UsuarioLogado.getInstancia().getId());
+        ConsultaDAO consultaDAO = new ConsultaDAO();
+        try {
+            consultaDAO.Inserir(consulta);
+        } catch (Exception ex) {
+            throw new RuntimeException("Falha na query para marcar consulta");
+        }
+        if (consulta != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("consulta", consulta);
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
+            rd.forward(request, response);
+
+        } else {
+            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/MarcacaoConsulta.jsp");
+            rd.forward(request, response);
+        }
     }
 
 }

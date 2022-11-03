@@ -29,6 +29,14 @@ public class Consulta {
         this.idpaciente = idpaciente;
     }
     
+    public Consulta(String data, String descricao, String idmedico, String idpaciente){
+        this.data = data;
+        this.descricao = descricao;
+        this.descricao = "N";
+        this.idmedico = idmedico;
+        this.idpaciente = idpaciente;
+    }
+    
     public String getId(){
         return this.id;
     }

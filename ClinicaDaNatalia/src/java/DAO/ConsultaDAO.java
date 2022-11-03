@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.Consulta;
 import model.Especialidade;
@@ -23,13 +24,18 @@ public class ConsultaDAO {
         public void Inserir(Consulta consulta) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta (id, data, descricao, realizada, idmedico, idpaciente) VALUES (?,?,?,?,?,?)");
-            sql.setTimestamp(1, Timestamp.valueOf(consulta.getData()));
-            sql.setString(2, consulta.getDescricao());
-            sql.setString(3, consulta.getRealizada());
-            sql.setInt(4, Integer.valueOf(consulta.getIdMedico()));
-            sql.setInt(5, Integer.valueOf(consulta.getIdPaciente()));
-            sql.executeUpdate();
+                    
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        java.util.Date dataFormatada = formatoData.parse(consulta.getData());
+        long dataFormatada2 = dataFormatada.getTime();
+        Timestamp dataFormatada3 = new java.sql.Timestamp(dataFormatada2);
+        PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta (data, descricao, realizada, idmedico, idpaciente) VALUES (?,?,?,?,?,?)");
+        sql.setTimestamp(1, dataFormatada3);
+        sql.setString(2, consulta.getDescricao());
+        sql.setString(3, consulta.getRealizada());
+        sql.setInt(4, Integer.valueOf(consulta.getIdMedico()));
+        sql.setInt(5, Integer.valueOf(consulta.getIdPaciente()));
+        sql.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de insert (consulta) incorreta");
