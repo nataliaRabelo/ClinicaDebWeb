@@ -5,6 +5,8 @@
  */
 package model;
 
+import DAO.TipoExameDAO;
+
 /**
  *
  * @author natyn
@@ -25,5 +27,17 @@ public class Exame {
         
     public int getIdConsulta(){
         return this.idconsulta;
+    }
+    
+    public String getDescricaoTipoExame(){
+        TipoExameDAO timoExameDAO = new TipoExameDAO();
+        /*Arraylist<TipoExame> tiposDeExames = timoExameDAO.listaDeTipoExames();
+        for(TipoExame tipoExame : tiposDeExames){
+            if(tipoExame.getId() == this.idtipoexame){
+                return tipoExame.getDescricao();
+            }
+        }
+        */
+        return "";
     }
 }

@@ -15,8 +15,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Registro de Paciente</title>
-        <a href="/ClinicaDaNatalia/"><button style="background: #fff; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Voltar</button></a>
+        <ul class="nav-bar">
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/RegistroPaciente">Registro</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+        </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
+        <link rel="stylesheet" href="view/index.css">
     </head>
     <body>
         <div class="container">
@@ -56,11 +62,6 @@
                 </form>
             </div>
         </div>
-        <style>
-                body {
-            background-color: #008AAF;
-        }     
-        </style>
         <script src="bootstrap/bootstrap.bundle.min.js"></script>
     </body>
 </html>

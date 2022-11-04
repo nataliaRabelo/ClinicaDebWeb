@@ -73,6 +73,7 @@ public class MarcacaoConsulta extends HttpServlet {
         String descricao = request.getParameter("descricao");
         String idmedico = request.getParameter("idmedico");
         String dataInteira = data + " " + hora;
+        System.out.println(dataInteira);
         Consulta consulta = new Consulta(dataInteira, descricao, idmedico, UsuarioLogado.getInstancia().getId());
         ConsultaDAO consultaDAO = new ConsultaDAO();
         try {

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import model.Consulta;
 import model.Especialidade;
@@ -23,18 +24,13 @@ public class ConsultaDAO {
     
         public void Inserir(Consulta consulta) throws Exception {
         Conexao conexao = new Conexao();
-        try {
-                    
-        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        java.util.Date dataFormatada = formatoData.parse(consulta.getData());
-        long dataFormatada2 = dataFormatada.getTime();
-        Timestamp dataFormatada3 = new java.sql.Timestamp(dataFormatada2);
-        PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta (data, descricao, realizada, idmedico, idpaciente) VALUES (?,?,?,?,?,?)");
-        sql.setTimestamp(1, dataFormatada3);
-        sql.setString(2, consulta.getDescricao());
-        sql.setString(3, consulta.getRealizada());
-        sql.setInt(4, Integer.valueOf(consulta.getIdMedico()));
-        sql.setInt(5, Integer.valueOf(consulta.getIdPaciente()));
+        try {           
+        String dataConsulta = consulta.getData() + ":00";
+        Timestamp dataTimeStamp = Timestamp.valueOf(dataConsulta);
+        PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta (data, descricao, idmedico, idpaciente) VALUES (?,'-',?,?)");
+        sql.setTimestamp(1, dataTimeStamp);
+        sql.setInt(2, Integer.parseInt(consulta.getIdMedico()));
+        sql.setInt(3, Integer.parseInt(consulta.getIdPaciente()));
         sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -114,6 +110,7 @@ public class ConsultaDAO {
             if (resultado != null) {
                 while (resultado.next()) {
                     Consulta consulta = new Consulta(resultado.getString("ID"), resultado.getString("DATA"), resultado.getString("DESCRICAO"), resultado.getString("REALIZADA"), resultado.getString("IDMEDICO"), resultado.getString("IDPACIENTE"));
+                    System.out.println("UHUL " + consulta.getDescricao());
                     consultas.add(consulta);
                 }
             }

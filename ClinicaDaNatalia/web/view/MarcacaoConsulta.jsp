@@ -30,17 +30,13 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="hora">hora</label>
-                        <input name="datahora" type="time" class="form-control" id="horaConsulta" placeholder="" value="" required>
+                        <input name="hora" type="time" class="form-control" id="horaConsulta" placeholder="" value="" required>
                     </div>
                 </div>
                     </div>
                     <div class="mb-3">
-                        <label for="cpf" class="form-label" color="#FFFAFA">descricao</label>
-                        <input type="text" name="cpf" class="form-control">
-                    </div>
-                    <div class="mb-3">
                         <label for="idtipoplano" class="form-label" color="#FFFAFA">medico</label>
-                        <select class="form-select d-block w-100 form-control" id="idtipoplano" name="idtipoplano"required>
+                        <select class="form-select d-block w-100 form-control" id="idmedico" name="idmedico"required>
                         <option value="">Escolha o medico.</option>
                         <%
                         ArrayList<Medico> listaDeMedicos = (ArrayList<Medico>) request.getAttribute("listaDeMedicos");

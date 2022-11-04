@@ -24,7 +24,7 @@ public class Consulta {
         this.id = id;
         this.data = data;
         this.descricao = descricao;
-        this.descricao = realizada;
+        this.realizada = realizada;
         this.idmedico = idmedico;
         this.idpaciente = idpaciente;
     }
@@ -32,7 +32,7 @@ public class Consulta {
     public Consulta(String data, String descricao, String idmedico, String idpaciente){
         this.data = data;
         this.descricao = descricao;
-        this.descricao = "N";
+        this.realizada = "N";
         this.idmedico = idmedico;
         this.idpaciente = idpaciente;
     }
@@ -58,7 +58,7 @@ public class Consulta {
     }
         
     public String getIdPaciente(){
-        return this.idmedico;
+        return this.idpaciente;
     }
     
     public void setId(String id){
