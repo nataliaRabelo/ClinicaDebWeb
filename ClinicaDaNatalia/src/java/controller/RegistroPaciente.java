@@ -48,7 +48,6 @@ public class RegistroPaciente extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String idtipoplano = request.getParameter("idtipoplano");
-        System.out.println(request.getParameter("idtipoplano"));
         Paciente usuario = new Paciente(nome, cpf, senha, idtipoplano);
         PacienteDAO pacienteDAO = new PacienteDAO();
         try {

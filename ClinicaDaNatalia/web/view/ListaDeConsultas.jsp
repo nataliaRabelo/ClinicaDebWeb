@@ -63,9 +63,6 @@
                         <td>
                             <%= idmedico%>
                         </td>
-                        <td>
-                            <a href="/ClinicaDaNatalia/"><button style="background: #fff; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Editar</button></a>
-                        </td>
                     </tr>
             </tbody>
             <%     }%>

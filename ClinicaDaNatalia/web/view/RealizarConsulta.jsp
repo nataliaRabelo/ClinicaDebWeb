@@ -26,15 +26,15 @@
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
                 <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Realizar consulta</h1></font></div>
-                <form action="RegistroPaciente" method="POST">
+                <form action="RealizarConsulta" method="POST">
                     <div class="mb-3">
-                        <label for="nome" class="form-label" color="#FFFAFA">descricao</label>
-                        <input type="text" name="nome" class="form-control">
+                        <label for="descricao" class="form-label" color="#FFFAFA">descricao</label>
+                        <input type="text" name="descricao" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="idtipoplano" class="form-label" color="#FFFAFA">consulta</label>
-                        <select class="form-select d-block w-100 form-control" id="idtipoplano" name="idtipoplano"required>
-                        <option value="">Escolha o plano.</option>
+                        <label for="id" class="form-label" color="#FFFAFA">consulta</label>
+                        <select class="form-select d-block w-100 form-control" id="id" name="id"required>
+                        <option value="">Escolha a consulta a ser alterada.</option>
                         <%
                         ArrayList<Consulta> listaDeConsultas = (ArrayList<Consulta>) request.getAttribute("listaDeConsultas");
 
