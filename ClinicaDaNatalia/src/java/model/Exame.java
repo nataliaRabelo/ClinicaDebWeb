@@ -13,31 +13,36 @@ import DAO.TipoExameDAO;
  */
 public class Exame {
     
-    private int id;
-    private int idtipoexame;
-    private int idconsulta;
+    private String id;
+    private String idtipoexame;
+    private String idconsulta;
+
+    public Exame(String idtipoexame, String idconsulta) {
+        this.idtipoexame = idtipoexame;
+        this.idconsulta = idconsulta;
+    }
     
-    public int getId(){
+    public String getId(){
         return this.id;
     }
     
-    public int getIdTipoExame(){
+    public String getIdTipoExame(){
         return this.idtipoexame;
     }
         
-    public int getIdConsulta(){
+    public String getIdConsulta(){
         return this.idconsulta;
     }
-    
-    public String getDescricaoTipoExame(){
-        TipoExameDAO timoExameDAO = new TipoExameDAO();
-        /*Arraylist<TipoExame> tiposDeExames = timoExameDAO.listaDeTipoExames();
-        for(TipoExame tipoExame : tiposDeExames){
-            if(tipoExame.getId() == this.idtipoexame){
-                return tipoExame.getDescricao();
-            }
-        }
-        */
-        return "";
+
+    public void setId(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdTipoExame(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdConsulta(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -7,6 +7,8 @@ package controller;
 
 import DAO.AdministradorDAO;
 import DAO.ConsultaDAO;
+import DAO.ExameDAO;
+import DAO.TipoExameDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Consulta;
+import model.Exame;
+import model.TipoExame;
 import model.Usuario;
 
 /**
@@ -42,14 +46,17 @@ public class RealizarConsulta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ConsultaDAO consultaDAO = new ConsultaDAO();
+            TipoExameDAO tipoExameDAO = new TipoExameDAO();
             ArrayList<Consulta> listaDeConsultasTotal = consultaDAO.ListaDeConsultas();
             ArrayList<Consulta> listaDeConsultas = new ArrayList<>();
+            ArrayList<TipoExame> tiposExames = tipoExameDAO.ListaDeTipoExames();
             for(Consulta consulta : listaDeConsultasTotal){
                 if(consulta.getRealizada().equals("N")){
                     listaDeConsultas.add(consulta);
                 }
             }
             request.setAttribute("listaDeConsultas", listaDeConsultas);
+            request.setAttribute("tiposExames", tiposExames);
             RequestDispatcher rd = request.getRequestDispatcher("/view/RealizarConsulta.jsp");
             rd.forward(request, response);
     }
@@ -67,33 +74,39 @@ public class RealizarConsulta extends HttpServlet {
             throws ServletException, IOException {
         String descricao = request.getParameter("descricao");
         String id = request.getParameter("id");
-        System.out.println(id);
+        String idtipoexame = request.getParameter("idtipoexame");
         ConsultaDAO consultaDAO = new ConsultaDAO();
+        TipoExameDAO tipoExameDAO = new TipoExameDAO();
+        ExameDAO exameDAO = new ExameDAO();
+        Consulta consulta = null;
+        Exame exame = null;
         try {
-            HttpSession session = request.getSession();
             ArrayList<Consulta> consultas = consultaDAO.ListaDeConsultas();
-            for(Consulta consulta : consultas){
-                if(consulta.getId().equals(id)){
-                    consulta.setDescricao(descricao);
-                    consulta.setRealizada("S");
-                    consultaDAO.Alterar(consulta);
-                    session.setAttribute("consulta", consulta);
-                    RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-                    rd.forward(request, response);
+            for(Consulta consultaDaLista : consultas){
+                if(consultaDaLista.getId().equals(id)){
+                    consultaDaLista.setDescricao(descricao);
+                    consultaDaLista.setRealizada("S");
+                    consulta = consultaDaLista;
+                    consultaDAO.Alterar(consultaDaLista);
                 }
-            }
-            
+            } if(!(idtipoexame.equals("-1"))){
+                exame = new Exame(idtipoexame,id);
+                exameDAO.Inserir(exame);
+                
+            }if (consulta == null) {
+            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/RealizarConsulta.jsp");
+            rd.forward(request, response);            
+        } else{
+            HttpSession session = request.getSession();
+            session.setAttribute("consulta", consulta);
+            session.setAttribute("exame", exame);
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+            rd.forward(request, response);
+        }
         } catch (Exception ex) {
             throw new RuntimeException("Falha na query para alterar consulta:" + ex.getMessage());
         }
-
-        if (descricao == null || id == null) {
-            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/RealizarConsulta.jsp");
-            rd.forward(request, response);
-            
-        } 
-
     }
 
 }

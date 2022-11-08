@@ -4,6 +4,7 @@
     Author     : natyn
 --%>
 
+<%@page import="model.TipoExame"%>
 <%@page import="model.Consulta"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,10 +38,29 @@
                         <option value="">Escolha a consulta a ser alterada.</option>
                         <%
                         ArrayList<Consulta> listaDeConsultas = (ArrayList<Consulta>) request.getAttribute("listaDeConsultas");
-
                         for (Consulta consulta : listaDeConsultas) {
                             out.println("<option value= '"+consulta.getId()+"'>");
+                            System.out.println(consulta.getId());
                             out.println(consulta.getData());
+                            out.println("</option>");
+                        }
+%>
+                    </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idtipoexame" class="form-label" color="#FFFAFA">exame</label>
+                        <select class="form-select d-block w-100 form-control" id="idtipoexame" name="idtipoexame"required>
+                        <option value="">Escolha o exame a ser solicitado.</option>
+                        <%
+                        ArrayList<TipoExame> tiposExames = (ArrayList<TipoExame>) request.getAttribute("tiposExames");
+                        for (TipoExame tipoExame : tiposExames) {
+                            if(tiposExames.indexOf(tipoExame) == 0){
+                                out.println("<option value= '"+"-1"+"'>");
+                                out.println("Sem exame");
+                                out.println("</option>");
+                            }
+                            out.println("<option value= '"+tipoExame.getId()+"'>");
+                            out.println(tipoExame.getDescricao());
                             out.println("</option>");
                         }
 %>

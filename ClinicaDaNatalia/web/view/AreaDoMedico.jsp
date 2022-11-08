@@ -17,7 +17,6 @@
     <div align="center"><font face="Trebuchet MS" color="#00000"><h1 class="display-1">Bem-vindo, médico. O que deseja fazer?</h1></font></div>
         <div align="center" class="span3">
               <a href="/ClinicaDaNatalia/RealizarConsulta"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Realizar consulta</button></a>
-              <a href="/ClinicaDaNatalia/SolicitacaoExame"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Solicitar exame</button></a>
               <a href="/ClinicaDaNatalia/ListaDeConsultas"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Lista de consultas</button></a>
          </div>
     </head>

@@ -9,42 +9,54 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.TipoExame;
+import model.Exame;
 
 /**
  *
  * @author natyn
  */
-public class TipoExameDAO {
+public class ExameDAO {
     
-        public void Inserir(TipoExame tipoExame) throws Exception {
+       public void Inserir(Exame exame) throws Exception {
         Conexao conexao = new Conexao();
+        PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO exames (idtipoexame, idconsulta) VALUES (?, ?)");
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO tipoexame (descricao) VALUES (?)");
-            sql.setString(1, tipoExame.getDescricao());
+            sql.setInt(1, Integer.valueOf(exame.getIdTipoExame()));
+            sql.setInt(2, Integer.valueOf(exame.getIdConsulta()));
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (tipoexame) incorreta");
+            throw new RuntimeException("Query de insert (exame) incorreta");
         } finally {
-            conexao.closeConexao();
-        }
+			try {
+                            sql.close();
+			} catch (SQLException e2) {
+                            System.out.println(e2.getMessage());
+			}
+
+			try {
+                            conexao.closeConexao();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
     }
 
-    public TipoExame get(TipoExame tipoExame) throws Exception {
+    public Exame get(Exame exame) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Comentarios WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(tipoExame.getId()));
+            sql.setInt(1, Integer.valueOf(exame.getId()));
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    tipoExame.setId(resultado.getString("ID"));
-                    tipoExame.setDescricao(resultado.getString("DESCRICAO"));
+                    exame.setId(resultado.getString("ID"));
+                    exame.setIdTipoExame(resultado.getString("IDTIPOEXAME"));
+                    exame.setIdConsulta(resultado.getString("IDCONSULTA"));
 
                 }
             }
-            return tipoExame;
+            return exame;
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de select (get comentario) incorreta");
@@ -53,11 +65,11 @@ public class TipoExameDAO {
         }
     }
 
-    public void Alterar(TipoExame tipoExame) throws Exception {
+    public void Alterar(Exame exame) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Comentarios SET cometario = ?, data = ?, idusuario = ?, senha = ?  WHERE ID = ? ");
-            sql.setString(1, tipoExame.getDescricao());
+            sql.setString(1, exame.getIdConsulta());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -67,11 +79,11 @@ public class TipoExameDAO {
         }
     }
 
-    public void Excluir(TipoExame tipoExame) throws Exception {
+    public void Excluir(Exame exame) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Comentarios WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(tipoExame.getId()));
+            sql.setInt(1, Integer.valueOf(exame.getId()));
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -81,26 +93,25 @@ public class TipoExameDAO {
         }
     }
 
-    public ArrayList<TipoExame> ListaDeTipoExames() {
-        ArrayList<TipoExame> tipoExames = new ArrayList();
+    public ArrayList<Exame> ListaDeTipoExames() {
+        ArrayList<Exame> planos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM tipoexame";
+            String selectSQL = "SELECT * FROM exame";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    TipoExame tipoExame = new TipoExame(resultado.getString("ID"), resultado.getString("DESCRICAO"));
-                    tipoExames.add(tipoExame);
+                    Exame tipoExame = new Exame(resultado.getString("ID"), resultado.getString("DESCRICAO"));
+                    planos.add(tipoExame);
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (ListaDeTipoExames) incorreta");
+            throw new RuntimeException("Query de select (ListaDeExames) incorreta");
         } finally {
             conexao.closeConexao();
         }
-        return tipoExames;
+        return planos;
     }
-    
 }
