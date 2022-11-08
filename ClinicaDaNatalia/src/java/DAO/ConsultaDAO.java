@@ -69,23 +69,16 @@ public class ConsultaDAO {
     public void Alterar(Consulta consulta) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            System.out.println("EAE" + Integer.valueOf(consulta.getId()));
             String dataConsulta = consulta.getData();
             Timestamp dataTimeStamp = Timestamp.valueOf(dataConsulta);
             PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE consulta SET id = ?, data = ?, descricao = ?, realizada = ?, idmedico = ?, idpaciente = ? WHERE id = ? ");
             sql.setInt(1, Integer.valueOf(consulta.getId()));
-            System.out.println("pegou");;
             sql.setTimestamp(2, dataTimeStamp);
-            System.out.println("pegou");
             sql.setString(3, consulta.getDescricao());
-            System.out.println("pegou");
             sql.setString(4, consulta.getRealizada());
-            System.out.println("pegou");
             sql.setInt(5, Integer.parseInt(consulta.getIdMedico()));
-            System.out.println("pegou");
             sql.setInt(6, Integer.parseInt(consulta.getIdPaciente()));
             sql.setInt(7, Integer.valueOf(consulta.getId()));
-            System.out.println(sql);
             sql.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

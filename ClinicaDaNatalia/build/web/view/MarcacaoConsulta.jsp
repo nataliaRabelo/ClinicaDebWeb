@@ -35,6 +35,10 @@
                 </div>
                     </div>
                     <div class="mb-3">
+                        <label for="descricao" class="form-label" color="#FFFAFA">descricao</label>
+                        <input type="text" name="descricao" class="form-control">
+                    </div>
+                    <div class="mb-3">
                         <label for="idtipoplano" class="form-label" color="#FFFAFA">medico</label>
                         <select class="form-select d-block w-100 form-control" id="idmedico" name="idmedico"required>
                         <option value="">Escolha o medico.</option>

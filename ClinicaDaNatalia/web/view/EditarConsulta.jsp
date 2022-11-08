@@ -1,8 +1,10 @@
 <%-- 
-    Document   : MarcacaoConsulta
-    Created on : 01/10/2022, 17:19:29
+    Document   : EditarConsulta
+    Created on : 08/11/2022, 07:54:54
     Author     : natyn
 --%>
+
+<%@page import="model.Paciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,8 +22,8 @@
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
-                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Marcação de consulta</h1></font></div>
-                <form action="MarcacaoConsulta" method="POST">
+                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Editar consulta</h1></font></div>
+                <form action="EditarConsulta" method="POST">
                     <div class="mb-3">
                         <div class="row">
                     <div class="col-md-6 mb-3">
@@ -33,13 +35,13 @@
                         <input name="hora" type="time" class="form-control" id="horaConsulta" placeholder="" value="" required>
                     </div>
                 </div>
-                    </div>
-                    <div class="mb-3">
+                <div class="mb-3">
                         <label for="descricao" class="form-label" color="#FFFAFA">descricao</label>
                         <input type="text" name="descricao" class="form-control">
                     </div>
+                    </div>
                     <div class="mb-3">
-                        <label for="idtipoplano" class="form-label" color="#FFFAFA">medico</label>
+                        <label for="idtipomedico" class="form-label" color="#FFFAFA">medico</label>
                         <select class="form-select d-block w-100 form-control" id="idmedico" name="idmedico"required>
                         <option value="">Escolha o medico.</option>
                         <%
@@ -48,6 +50,21 @@
                         for (Medico medico : listaDeMedicos) {
                             out.println("<option value= '"+medico.getId()+"'>");
                             out.println(medico.getNome() + " - " + medico.getNomeEspecialidade(medico.getId()));
+                            out.println("</option>");
+                        }
+%>
+                    </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idpaciente" class="form-label" color="#FFFAFA">paciente</label>
+                        <select class="form-select d-block w-100 form-control" id="idpaciente" name="idpaciente"required>
+                        <option value="">Escolha o paciente.</option>
+                        <%
+                        ArrayList<Paciente> listaDePacientes = (ArrayList<Paciente>) request.getAttribute("listaDePacientes");
+
+                        for (Paciente paciente : listaDePacientes) {
+                            out.println("<option value= '"+paciente.getId()+"'>");
+                            out.println(paciente.getNome());
                             out.println("</option>");
                         }
 %>
