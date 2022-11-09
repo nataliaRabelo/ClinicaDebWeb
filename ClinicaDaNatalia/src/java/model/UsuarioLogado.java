@@ -20,6 +20,7 @@ public class UsuarioLogado{
     private String crm;
     private String estadocrm;
     private String idespecialidade;
+    private String botao; 
     private static UsuarioLogado instancia;
     
     public void setMedico(Medico usuario){
@@ -76,5 +77,14 @@ public class UsuarioLogado{
     public String getCrm(){
         return this.crm;
     }
+    
+    public String getBotao(){
+        return this.botao;
+    }
+    
+    public void setBotao(String botao){
+        this.botao=botao;
+    }
+    
     
 }

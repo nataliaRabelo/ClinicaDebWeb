@@ -10,6 +10,9 @@ import DAO.EspecialidadeDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,25 +56,6 @@ public class ListaDeConsultas extends HttpServlet {
             } catch (IOException | ServletException ex) {
                 throw new RuntimeException("Falha na query ao listar consultas.");
             }
-    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String id = (String) request.getParameter("id");
-        System.out.println("id: " + id);
-	if (id != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("id", id);
-            getServletContext().getRequestDispatcher("/EditarConsulta/*").forward(request,response);
-            RequestDispatcher rd = request.getRequestDispatcher("/EditarConsulta");
-            rd.forward(request, response);
-
-        } else {
-            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");
-            rd.forward(request, response);
-        }
     }
 
 }

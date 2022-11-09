@@ -4,6 +4,7 @@
     Author     : natyn
 --%>
 
+<%@page import="model.UsuarioLogado"%>
 <%@page import="model.Paciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Medico"%>
@@ -35,10 +36,10 @@
                         <input name="hora" type="time" class="form-control" id="horaConsulta" placeholder="" value="" required>
                     </div>
                 </div>
-                <div class="mb-3">
+                    </div>
+                     <div class="mb-3">
                         <label for="descricao" class="form-label" color="#FFFAFA">descricao</label>
                         <input type="text" name="descricao" class="form-control">
-                    </div>
                     </div>
                     <div class="mb-3">
                         <label for="idtipomedico" class="form-label" color="#FFFAFA">medico</label>

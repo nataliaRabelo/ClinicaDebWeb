@@ -70,7 +70,8 @@
                             if(usuarioLogado.getCrm() != null){
                                 out.print("<td>");
                                 if(consulta.getRealizada().equals("S")){
-                                    out.print("<form action=\"EditarConsulta\"\"\" method=\"post\">");
+                                    UsuarioLogado.getInstancia().setBotao(consulta.getId());
+                                    out.print("<form action=\"EditarConsulta\"\"\" method=\"get\">");
                                     out.print("<button name=\"id\" value=\""+ consulta.getId()+"\">Editar</button>");
                                 }
                                 out.print("</td>");

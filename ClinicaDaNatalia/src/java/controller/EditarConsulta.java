@@ -44,14 +44,13 @@ public class EditarConsulta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = (String) request.getParameter("id");
-        System.out.println("id do get: " + id);
         MedicoDAO medicoDAO = new MedicoDAO();
         PacienteDAO pacienteDAO = new PacienteDAO();
         ArrayList<Usuario> listaDeMedicos = medicoDAO.ListaDeMedicos();
         ArrayList<Paciente> listaDePacientes = pacienteDAO.ListaDePacientes();
         request.setAttribute("listaDeMedicos", listaDeMedicos);
         request.setAttribute("listaDePacientes", listaDePacientes);
+        request.setAttribute("id", UsuarioLogado.getInstancia().getBotao());
         RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
         rd.forward(request, response);
     }
@@ -59,9 +58,8 @@ public class EditarConsulta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
         Consulta consulta = null;
-        String id = (String) request.getParameter("id");
+        String id = UsuarioLogado.getInstancia().getBotao();
         System.out.println("id: " + id);
         String data = (String) request.getParameter("data");
         System.out.println("data: " + data);
@@ -74,24 +72,27 @@ public class EditarConsulta extends HttpServlet {
         String idmedico = (String) request.getParameter("idmedico");
         System.out.println("idmedico: " + idmedico);
         String dataInteira = data + " " + hora;
-        consulta = new Consulta(id, dataInteira, descricao, "S", idmedico, idpaciente);
-        ConsultaDAO consultaDAO = new ConsultaDAO();
-        try {
-            consultaDAO.Alterar(consulta);
-        } catch (Exception ex) {
-            throw new RuntimeException("Falha na query para editar consulta");
-        }
-        if (consulta != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("consulta", consulta);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");
-            rd.forward(request, response);
+        if(data != null && hora != null && descricao != null && idpaciente != null && idmedico != null){
+                consulta = new Consulta(id, dataInteira, descricao, "S", idmedico, idpaciente);
+                ConsultaDAO consultaDAO = new ConsultaDAO();
+            try {
+                consultaDAO.Alterar(consulta);
+            } catch (Exception ex) {
+                throw new RuntimeException("Falha na query para editar consulta");
+            }
+            if (consulta != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("consulta", consulta);
+                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");
+                rd.forward(request, response);
 
-        } else {
-            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
-            rd.forward(request, response);
+            } else {
+                request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
+                rd.forward(request, response);
+            }
         }
+
     }
     
         
