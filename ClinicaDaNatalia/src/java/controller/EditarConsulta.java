@@ -83,7 +83,7 @@ public class EditarConsulta extends HttpServlet {
             if (consulta != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("consulta", consulta);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
                 rd.forward(request, response);
 
             } else {
