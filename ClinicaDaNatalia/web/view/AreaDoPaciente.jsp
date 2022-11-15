@@ -25,6 +25,7 @@
         <div align="center" class="span3">
               <a href="/ClinicaDaNatalia/MarcacaoConsulta"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Marcar consulta</button></a>
               <a href="/ClinicaDaNatalia/ListaDeConsultas"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Lista de consultas</button></a>
+              <a href="/ClinicaDaNatalia/ListaDeExames"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Lista de exames</button></a>
          </div>
     </head>
     <body>

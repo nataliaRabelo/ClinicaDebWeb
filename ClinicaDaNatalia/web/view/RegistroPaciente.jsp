@@ -22,6 +22,7 @@
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
         </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style4.css">
         <link rel="stylesheet" href="view/index.css">
     </head>
     <body>
@@ -57,7 +58,7 @@
                     </select>
                     </div>
                     <div>
-                        <input type="submit" value="Enviar" class="btn-primary">
+                        <input type="submit" value="Enviar" class="btn btn-primary">
                     </div>
                 </form>
             </div>

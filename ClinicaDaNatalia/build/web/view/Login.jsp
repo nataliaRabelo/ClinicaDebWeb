@@ -12,13 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Login</title>
-        <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
+        <ul class="nav-bar">
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/RegistroPaciente">Registro</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+        </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style4.css">
+        <link rel="stylesheet" href="view/index.css">
     </head>
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
-                <h3>Login</h3>
+                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Login</h1></font></div>
                 <form action="Login" method="POST">
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>

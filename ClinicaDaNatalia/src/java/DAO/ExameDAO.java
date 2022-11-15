@@ -114,4 +114,26 @@ public class ExameDAO {
         }
         return planos;
     }
+    
+        public ArrayList<Exame> ListaDeExames() {
+        ArrayList<Exame> exames = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM exames";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Exame tipoExame = new Exame(resultado.getString("ID"), resultado.getString("IDTIPOEXAME"), resultado.getString("IDCONSULTA"));
+                    exames.add(tipoExame);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (ListaDeExames) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return exames;
+    }
 }
