@@ -16,13 +16,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Lista de Especialidades</title>
-        <a href="/ClinicaDaNatalia/"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar</button></a>
+        <ul class="nav-bar">
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/RegistroPaciente">Registro</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+        </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style4.css">
+        <link rel="stylesheet" href="view/index.css">
     </head>
     <body>
         <div class="container">
             <div class="mt-5">
-                <h2>Lista de Especialidades</h2>
+                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Lista de Especialidades</h1></font></div>
                 <%
                     ArrayList<Especialidade> listaDeEspecialidades = (ArrayList<Especialidade>) request.getAttribute("listaDeEspecialidades");
 

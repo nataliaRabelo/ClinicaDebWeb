@@ -5,7 +5,9 @@
  */
 package model;
 
+import DAO.MedicoDAO;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,6 +61,17 @@ public class Consulta {
         
     public String getIdPaciente(){
         return this.idpaciente;
+    }
+    
+    public String getMedico(){
+        MedicoDAO medicoDAO = new MedicoDAO();
+        ArrayList<Usuario> medicos = medicoDAO.ListaDeMedicos();
+            for(Usuario usuario : medicos){
+            if(usuario.getId().equals(this.getIdMedico())){
+                return usuario.getNome();
+            }
+        }
+        return null;
     }
     
     public void setId(String id){

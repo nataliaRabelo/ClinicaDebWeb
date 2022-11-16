@@ -14,8 +14,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Marcação de consulta</title>
-        <a href="/ClinicaDaNatalia/"><button style="background: #fff; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Voltar</button></a>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style4.css">
+        <link rel="stylesheet" href="view/index.css">
+        <ul class="nav-bar">
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/AreaDoPaciente">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+    </ul>
     </head>
     <body>
         <div class="container">
