@@ -39,7 +39,7 @@
                         <input type="text" name="cpf" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="senha;" class="form-label" color="#FFFAFA">senha</label>
+                        <label for="senha" class="form-label" color="#FFFAFA">senha</label>
                         <input type="text" name="senha" class="form-control">
                     </div>
                     <div class="mb-3">

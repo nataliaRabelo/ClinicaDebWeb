@@ -70,10 +70,9 @@ public class MarcacaoConsulta extends HttpServlet {
             throws ServletException, IOException {
         String data = request.getParameter("data");
         String hora = request.getParameter("hora");
-        String descricao = request.getParameter("descricao");
         String idmedico = request.getParameter("idmedico");
         String dataInteira = data + " " + hora;
-        Consulta consulta = new Consulta(dataInteira, descricao, idmedico, UsuarioLogado.getInstancia().getId());
+        Consulta consulta = new Consulta(dataInteira, "", idmedico, UsuarioLogado.getInstancia().getId());
         ConsultaDAO consultaDAO = new ConsultaDAO();
         try {
             consultaDAO.Inserir(consulta);

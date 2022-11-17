@@ -24,7 +24,8 @@ public class ConsultaDAO {
     
         public void Inserir(Consulta consulta) throws Exception {
         Conexao conexao = new Conexao();
-        try {           
+        try {
+        
         String dataConsulta = consulta.getData() + ":00";
         Timestamp dataTimeStamp = Timestamp.valueOf(dataConsulta);
         PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta (data, descricao, idmedico, idpaciente) VALUES (?,'-',?,?)");
