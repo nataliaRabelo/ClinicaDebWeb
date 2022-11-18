@@ -22,6 +22,7 @@
         </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
         <link rel="stylesheet" href="view/index.css">
+        <link rel="stylesheet" href="view/multiselect.css">
     </head>
     <body>
         <div class="container">
