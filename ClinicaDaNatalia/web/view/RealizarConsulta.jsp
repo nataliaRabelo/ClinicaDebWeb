@@ -49,8 +49,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="idtipoexame" class="form-label" color="#FFFAFA">exame</label>
-                        <select class="form-select d-block w-100 form-control" id="idtipoexame" name="idtipoexame"required>
-                        <option value="">Escolha o exame a ser solicitado.</option>
+                        <select class="form-select d-block w-100 form-control" id="idtipoexame" name="idtipoexame"required multiple>
+                        <option value="">Escolha o(s) exame(s) a ser(em) solicitado(s).</option>
                         <%
                         ArrayList<TipoExame> tiposExames = (ArrayList<TipoExame>) request.getAttribute("tiposExames");
                         for (TipoExame tipoExame : tiposExames) {

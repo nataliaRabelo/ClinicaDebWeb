@@ -74,7 +74,7 @@ public class RealizarConsulta extends HttpServlet {
             throws ServletException, IOException {
         String descricao = request.getParameter("descricao");
         String id = request.getParameter("id");
-        String idtipoexame = request.getParameter("idtipoexame");
+        String[] idtipoexame = request.getParameterValues("idtipoexame");
         ConsultaDAO consultaDAO = new ConsultaDAO();
         TipoExameDAO tipoExameDAO = new TipoExameDAO();
         ExameDAO exameDAO = new ExameDAO();
@@ -89,11 +89,19 @@ public class RealizarConsulta extends HttpServlet {
                     consulta = consultaDaLista;
                     consultaDAO.Alterar(consultaDaLista);
                 }
-            } if(!(idtipoexame.equals("-1"))){
-                exame = new Exame(idtipoexame,id);
-                exameDAO.Inserir(exame);
-                
-            }if (consulta == null) {
+            }
+            boolean semExame = false;
+            for(int i = 0; i < idtipoexame.length; i++){
+                if(idtipoexame[i].equals("-1")){
+                semExame = true;  
+                }else if(semExame){
+                    break;
+                }else{
+                    exame = new Exame(idtipoexame[i],id);
+                    exameDAO.Inserir(exame);
+                }
+            }
+        if (consulta == null) {
             request.setAttribute("msgError", "Algo não foi registrado corretamente.");
             RequestDispatcher rd = request.getRequestDispatcher("/view/RealizarConsulta.jsp");
             rd.forward(request, response);            
