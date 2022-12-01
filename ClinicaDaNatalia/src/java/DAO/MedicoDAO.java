@@ -101,8 +101,8 @@ public class MedicoDAO {
         }
     }
 
-    public ArrayList<Usuario> ListaDeMedicos() {
-        ArrayList<Usuario> meusUsuarios = new ArrayList();
+    public ArrayList<Medico> ListaDeMedicos() {
+        ArrayList<Medico> meusUsuarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
             String selectSQL = "SELECT * FROM medico order by nome";
@@ -111,14 +111,13 @@ public class MedicoDAO {
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    Usuario usuario = new Medico(resultado.getString("NOME"),
+                    Medico usuario = new Medico(resultado.getString("ID"), resultado.getString("NOME"),
                             resultado.getString("CPF"),
                             resultado.getString("SENHA"), 
                             resultado.getString("CRM"),
                             resultado.getString("ESTADOCRM"),
                             resultado.getString("AUTORIZADO"),
                             resultado.getString("IDESPECIALIDADE"));
-                    usuario.setId(Integer.parseInt(resultado.getString("id")));
                     meusUsuarios.add(usuario);
                 }
             }

@@ -12,10 +12,12 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RegistroAdministrador.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConsultas.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/AreaDoMedico.jsp</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ExcluirConsulta.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/EspecialidadeDAO.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/MarcacaoConsulta.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeExames.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/RegistroAdministrador.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/multiselect.css</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/Exame.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RegistroEspecialidade.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeConvenios.jsp</file>
@@ -40,7 +42,6 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConvenios.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/Registro.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/AdministradorDAO.java</file>
-            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/nbproject/build-impl.xml</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/AreaDoMedico.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RealizarConsulta.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeEspecialidades.jsp</file>

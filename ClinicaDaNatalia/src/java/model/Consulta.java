@@ -38,6 +38,10 @@ public class Consulta {
         this.idmedico = idmedico;
         this.idpaciente = idpaciente;
     }
+
+    public Consulta() {
+        
+    }
     
     public String getId(){
         return this.id;
@@ -45,6 +49,10 @@ public class Consulta {
     
     public String getData(){
         return this.data;
+    }
+    
+    public String getHora(){
+        return "00:00";
     }
     
     public String getDescricao(){
@@ -65,7 +73,7 @@ public class Consulta {
     
     public String getMedico(){
         MedicoDAO medicoDAO = new MedicoDAO();
-        ArrayList<Usuario> medicos = medicoDAO.ListaDeMedicos();
+        ArrayList<Medico> medicos = medicoDAO.ListaDeMedicos();
             for(Usuario usuario : medicos){
             if(usuario.getId().equals(this.getIdMedico())){
                 return usuario.getNome();

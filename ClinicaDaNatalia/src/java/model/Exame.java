@@ -33,6 +33,10 @@ public class Exame {
         this.idtipoexame = idtipoexame;
         this.idconsulta = idconsulta;
     }
+
+    public Exame() {
+        
+    }
     
     public String getId(){
         return this.id;
@@ -81,7 +85,7 @@ public class Exame {
     
     public String getMedico(){
         MedicoDAO medicoDAO = new MedicoDAO();
-        ArrayList<Usuario> medicos = medicoDAO.ListaDeMedicos();
+        ArrayList<Medico> medicos = medicoDAO.ListaDeMedicos();
             for(Usuario usuario : medicos){
             if(usuario.getId().equals(this.getIdMedico())){
                 return usuario.getNome();

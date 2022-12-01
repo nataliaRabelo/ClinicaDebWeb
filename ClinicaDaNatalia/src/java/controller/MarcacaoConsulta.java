@@ -51,7 +51,7 @@ public class MarcacaoConsulta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MedicoDAO medicoDAO = new MedicoDAO();
-        ArrayList<Usuario> listaDeMedicos = medicoDAO.ListaDeMedicos();
+        ArrayList<Medico> listaDeMedicos = medicoDAO.ListaDeMedicos();
         request.setAttribute("listaDeMedicos", listaDeMedicos);
         RequestDispatcher rd = request.getRequestDispatcher("/view/MarcacaoConsulta.jsp");
         rd.forward(request, response);

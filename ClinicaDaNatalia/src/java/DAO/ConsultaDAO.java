@@ -41,20 +41,21 @@ public class ConsultaDAO {
         }
     }
 
-    public Consulta get(Consulta consulta) throws Exception {
+    public Consulta get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM consulta WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(consulta.getId()));
+            sql.setInt(1, Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
+            Consulta consulta = new Consulta();
             if (resultado != null) {
                 while (resultado.next()) {
                     consulta.setId(resultado.getString("ID"));
-                    consulta.setDescricao(resultado.getString("DATA"));
+                    consulta.setData(resultado.getString("DATA"));
                     consulta.setDescricao(resultado.getString("DESCRICAO"));
-                    consulta.setDescricao(resultado.getString("REALIZADA"));
-                    consulta.setDescricao(resultado.getString("IDMEDICO"));
-                    consulta.setDescricao(resultado.getString("IDPACIENTE"));
+                    consulta.setRealizada(resultado.getString("REALIZADA"));
+                    consulta.setIdMedico(resultado.getString("IDMEDICO"));
+                    consulta.setIdPaciente(resultado.getString("IDPACIENTE"));
 
                 }
             }
@@ -93,12 +94,13 @@ public class ConsultaDAO {
         }
     }
 
-    public void Excluir(Consulta consulta) throws Exception {
+    public void Excluir(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM consulta WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(consulta.getId()));
+            sql.setInt(1, Integer.parseInt(id));
             sql.executeUpdate();
+            System.out.println(sql);
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de delete (excluir consulta) incorreta");

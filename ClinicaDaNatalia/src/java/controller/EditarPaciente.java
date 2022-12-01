@@ -33,7 +33,7 @@ import model.UsuarioLogado;
  * @author natyn
  */
 @WebServlet(name = "EditarConsulta", urlPatterns = {"/EditarConsulta/*"})
-public class EditarConsulta extends HttpServlet {
+public class EditarPaciente extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -60,7 +60,7 @@ public class EditarConsulta extends HttpServlet {
             Consulta consulta = consultaDAO.get(id);
             request.setAttribute("consulta", consulta);
         } catch (Exception ex) {
-            Logger.getLogger(EditarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
         rd.forward(request, response);

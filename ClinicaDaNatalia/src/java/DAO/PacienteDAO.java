@@ -37,12 +37,13 @@ public class PacienteDAO {
         }
     }
 
-    public Usuario get(Paciente usuario) throws Exception {
+    public Usuario get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(usuario.getId()));
+            sql.setInt(1, Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
+            Paciente usuario = null;
             if (resultado != null) {
                 while (resultado.next()) {
                     usuario.setId(Integer.parseInt(resultado.getString("ID")));
@@ -65,17 +66,17 @@ public class PacienteDAO {
     public void Alterar(Paciente usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE paciente SET nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ?  WHERE ID = ? ");
-            sql.setString(1, usuario.getNome());
-            sql.setString(2, usuario.getCpf());
-            sql.setString(3, usuario.getSenha());
-            sql.setString(4, usuario.getAutorizado());
-            sql.setString(5, usuario.getIdtipoPlano());
-
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE paciente SET id = ?, nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ? WHERE id = ? ");
+            sql.setInt(1, Integer.valueOf(usuario.getId()));
+            sql.setString(2, usuario.getNome());
+            sql.setString(3, usuario.getCpf());
+            sql.setString(4, usuario.getSenha());
+            sql.setString(5, usuario.getAutorizado());
+            sql.setInt(6, Integer.parseInt(usuario.getIdtipoPlano()));
+            sql.setInt(7, Integer.valueOf(usuario.getId()));
             sql.executeUpdate();
-
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

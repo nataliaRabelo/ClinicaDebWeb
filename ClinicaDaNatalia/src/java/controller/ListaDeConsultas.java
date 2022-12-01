@@ -44,6 +44,8 @@ public class ListaDeConsultas extends HttpServlet {
                         listaDeConsultas.add(consulta);
                     }if(UsuarioLogado.getInstancia().getCrm() != null && consulta.getIdMedico().equals(UsuarioLogado.getInstancia().getId())){
                         listaDeConsultas.add(consulta);
+                    }if(UsuarioLogado.getInstancia().getCrm() == null && UsuarioLogado.getInstancia().getIdTipoPlano() == null){
+                        listaDeConsultas.add(consulta);
                     }
                     
                 }

@@ -7,7 +7,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +17,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author natyn
  */
-@WebServlet(name = "AreaDoAdministrador", urlPatterns = {"/AreaDoAdministrador"})
-public class AreaDoAdministrador extends HttpServlet {
+@WebServlet(name = "EditarAdministrador", urlPatterns = {"/EditarAdministrador"})
+public class EditarAdministrador extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       
+    }
+
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -31,9 +36,9 @@ public class AreaDoAdministrador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
-            rd.forward(request, response);
+       
     }
+
 }

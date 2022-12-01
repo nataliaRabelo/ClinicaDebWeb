@@ -74,15 +74,16 @@ public class AdministradorDAO {
         }
     }
 
-    public void Excluir(Usuario Usuario) throws Exception {
+    public void Excluir(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM administrador WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(Usuario.getId()));
+            sql.setInt(1, Integer.parseInt(id));
             sql.executeUpdate();
+            System.out.println(sql);
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException("Query de delete (excluir consulta) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -99,8 +100,8 @@ public class AdministradorDAO {
             if (resultado != null) {
                 while (resultado.next()) {
                     Usuario usuario = new Usuario(resultado.getString("NOME"),
-                            resultado.getString("CPF"),
-                            resultado.getString("SENHA"));
+                    resultado.getString("CPF"),
+                    resultado.getString("SENHA"));
                     usuario.setId(Integer.parseInt(resultado.getString("id")));
                     meusUsuarios.add(usuario);
                 }

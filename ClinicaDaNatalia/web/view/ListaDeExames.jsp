@@ -62,7 +62,7 @@
                     UsuarioLogado usuarioLogado = (UsuarioLogado) request.getAttribute("usuariologado");
                     ArrayList<Exame> listaDeExames = (ArrayList<Exame>) request.getAttribute("listaDeExames");
                     if(listaDeExames.isEmpty()){
-                        out.print("<h1>Sua lista de consultas está vazia! D:</h1>");
+                        out.print("<h1>Sua lista de exames está vazia! D:</h1>");
                     }
                     for (Exame exame : listaDeExames) {
                         String id = exame.getId();
