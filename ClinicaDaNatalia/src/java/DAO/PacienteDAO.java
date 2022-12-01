@@ -37,27 +37,27 @@ public class PacienteDAO {
         }
     }
 
-    public Usuario get(String id) throws Exception {
+    public Paciente get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(id));
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE ID = " + Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
-            Paciente usuario = null;
+            Paciente usuario = new Paciente();
+            System.out.println(sql);
             if (resultado != null) {
                 while (resultado.next()) {
-                    usuario.setId(Integer.parseInt(resultado.getString("ID")));
+                    usuario.setId(resultado.getString("ID"));
                     usuario.setNome(resultado.getString("NOME"));
                     usuario.setCpf(resultado.getString("CPF"));
                     usuario.setSenha(resultado.getString("SENHA"));
                     usuario.setAutorizado(resultado.getString("AUTORIZADO"));
-                    usuario.setIdTipoPlano(resultado.getString("IDESPECIALIDADE"));
+                    usuario.setIdTipoPlano(resultado.getString("IDTIPOPLANO"));
                 }
             }
             return usuario;
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (get) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

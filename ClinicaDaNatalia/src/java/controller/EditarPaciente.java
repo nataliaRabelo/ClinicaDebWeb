@@ -8,6 +8,7 @@ package controller;
 import DAO.ConsultaDAO;
 import DAO.MedicoDAO;
 import DAO.PacienteDAO;
+import DAO.TipoPlanoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpSession;
 import model.Consulta;
 import model.Medico;
 import model.Paciente;
+import model.TipoPlano;
 import model.Usuario;
 import model.UsuarioLogado;
 
@@ -32,7 +34,7 @@ import model.UsuarioLogado;
  *
  * @author natyn
  */
-@WebServlet(name = "EditarConsulta", urlPatterns = {"/EditarConsulta/*"})
+@WebServlet(name = "EditarPaciente", urlPatterns = {"/EditarPaciente/*"})
 public class EditarPaciente extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,56 +50,48 @@ public class EditarPaciente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = (String) request.getParameter("id");
-        MedicoDAO medicoDAO = new MedicoDAO();
+        TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
         PacienteDAO pacienteDAO = new PacienteDAO();
-        ConsultaDAO consultaDAO = new ConsultaDAO();
-        ArrayList<Medico> listaDeMedicos = medicoDAO.ListaDeMedicos();
-        ArrayList<Paciente> listaDePacientes = pacienteDAO.ListaDePacientes();
-        request.setAttribute("listaDeMedicos", listaDeMedicos);
-        request.setAttribute("listaDePacientes", listaDePacientes);
+        ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
+        request.setAttribute("listaDePlanos", listaDePlanos);
         request.setAttribute("id", id);
         try {
-            Consulta consulta = consultaDAO.get(id);
-            request.setAttribute("consulta", consulta);
+            Paciente paciente = pacienteDAO.get(id);
+            request.setAttribute("paciente", paciente);
         } catch (Exception ex) {
-            Logger.getLogger(EditarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException( ex.getCause() + " " + ex.getMessage());
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/view/EditarPaciente.jsp");
         rd.forward(request, response);
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Consulta consulta = null;
+        Paciente paciente = null;
         String id = (String) request.getParameter("id");
-        System.out.println("id: " + id);
-        String data = (String) request.getParameter("data");
-        System.out.println("data: " + data);
-        String descricao = (String) request.getParameter("descricao");
-        System.out.println("descricao: " + descricao);
-        String idpaciente = (String) request.getParameter("idpaciente");
-        System.out.println("idpaciente: " + idpaciente);
-        String idmedico = (String) request.getParameter("idmedico");
-        System.out.println("idmedico: " + idmedico);
-        data = data.replace("T", " ");
-        if(data != null && descricao != null && idpaciente != null && idmedico != null){
-                consulta = new Consulta(id, data, descricao, "S", idmedico, idpaciente);
-                ConsultaDAO consultaDAO = new ConsultaDAO();
+        String nome = (String) request.getParameter("nome");
+        String cpf = (String) request.getParameter("cpf");
+        String senha = (String) request.getParameter("senha");
+        String autorizado = (String) request.getParameter("autorizado");
+        String idtipoplano = (String) request.getParameter("idtipoplano");
+        if(id != null && nome != null && cpf != null && autorizado != null && idtipoplano != null){
+                paciente = new Paciente(id, nome, cpf, senha, autorizado, idtipoplano);
+                PacienteDAO pacienteDAO = new PacienteDAO();
             try {
-                consultaDAO.Alterar(consulta);
+                pacienteDAO.Alterar(paciente);
             } catch (Exception ex) {
-                throw new RuntimeException("Falha na query para editar consulta");
+                throw new RuntimeException(ex.getMessage());
             }
-            if (consulta != null) {
+            if (paciente != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("consulta", consulta);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+                session.setAttribute("paciente", paciente);
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
 
             } else {
                 request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-                RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/EditarPaciente.jsp");
                 rd.forward(request, response);
             }
         }

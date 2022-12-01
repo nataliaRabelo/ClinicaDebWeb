@@ -92,8 +92,14 @@ public class EditarConsulta extends HttpServlet {
             if (consulta != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("consulta", consulta);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-                rd.forward(request, response);
+                if(UsuarioLogado.getInstancia().getCrm() != null){
+                   RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+                   rd.forward(request, response); 
+                }else{
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+                    rd.forward(request, response);
+                }
+                
 
             } else {
                 request.setAttribute("msgError", "Algo não foi registrado corretamente.");

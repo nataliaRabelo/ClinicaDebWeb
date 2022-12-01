@@ -16,6 +16,10 @@ public class Usuario {
     private String cpf;
     private String senha;
     
+    public Usuario(){
+        
+    }
+    
     public Usuario(String id, String nome, String cpf, String senha){
         this.id = id;
         this.nome = nome;
@@ -47,7 +51,11 @@ public class Usuario {
     public void setId(int id) {
         this.id = String.valueOf(id);
     }
-
+    
+    public void setId(String id) {
+        this.id = String.valueOf(id);
+    }
+        
     public void setNome(String nome) {
         this.nome = nome;
     }

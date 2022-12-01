@@ -90,10 +90,10 @@
                         </td>
                         <%
                         out.print("<td>");
-                        out.print("<form action=\"EditarMedico\"\"\" method=\"get\">");
+                        out.print("<form action=\"EditarPaciente\"\"\" method=\"get\">");
                         out.print("<button name=\"id\" value=\""+ paciente.getId()+"\">Editar</button>");
                         out.print("</form>");
-                        out.print("<form action=\"ExcluirMedico\"\"\" method=\"post\">");
+                        out.print("<form action=\"ExcluirPaciente\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ paciente.getId()+"\">Excluir</button>");
                         out.print("</form>");
                         out.print("</td>");
