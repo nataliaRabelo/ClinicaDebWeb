@@ -53,6 +53,7 @@ public class ExcluirConsulta extends HttpServlet {
             }else{
                 consultaDAO.Excluir(id);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+                rd.forward(request, response);
             }
 
         } catch (Exception ex) {
