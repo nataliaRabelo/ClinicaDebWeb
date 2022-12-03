@@ -39,25 +39,26 @@ public class MedicoDAO {
         }
     }
 
-    public Usuario get(Medico usuario) throws Exception {
+    public Medico get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medico WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(usuario.getId()));
+            sql.setInt(1, Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
+            Medico medico = new Medico();
             if (resultado != null) {
                 while (resultado.next()) {
-                    usuario.setId(Integer.parseInt(resultado.getString("ID")));
-                    usuario.setNome(resultado.getString("NOME"));
-                    usuario.setCpf(resultado.getString("CPF"));
-                    usuario.setSenha(resultado.getString("SENHA"));
-                    usuario.setCrm(resultado.getString("CRM"));
-                    usuario.setEstadoCrm(resultado.getString("ESTADOCRM"));
-                    usuario.setAutorizado(resultado.getString("AUTORIZADO"));
-                    usuario.setIdEspecialidade(resultado.getString("IDESPECIALIDADE"));
+                    medico.setId(Integer.parseInt(resultado.getString("ID")));
+                    medico.setNome(resultado.getString("NOME"));
+                    medico.setCpf(resultado.getString("CPF"));
+                    medico.setSenha(resultado.getString("SENHA"));
+                    medico.setCrm(resultado.getString("CRM"));
+                    medico.setEstadoCrm(resultado.getString("ESTADOCRM"));
+                    medico.setAutorizado(resultado.getString("AUTORIZADO"));
+                    medico.setIdEspecialidade(resultado.getString("IDESPECIALIDADE"));
                 }
             }
-            return usuario;
+            return medico;
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de select (get) incorreta");
@@ -69,33 +70,35 @@ public class MedicoDAO {
     public void Alterar(Medico usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medico SET nome = ?, cpf = ?, senha = ?, crm = ?, estadocrm = ?, autorizado = ?, idespecialidade = ?  WHERE ID = ? ");
-            sql.setString(1, usuario.getNome());
-            sql.setString(2, usuario.getCpf());
-            sql.setString(3, usuario.getSenha());
-            sql.setString(4, usuario.getCrm());
-            sql.setString(5, usuario.getEstadoCrm());
-            sql.setString(6, usuario.getAutorizado());
-            sql.setString(7, usuario.getIdEspecialidade());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medico SET id = ?, nome = ?, cpf = ?, senha = ?, crm = ?, estadocrm = ?, autorizado = ?, idespecialidade = ?  WHERE ID = ? ");
+            sql.setInt(1, Integer.valueOf(usuario.getId()));
+            sql.setString(2, usuario.getNome());
+            sql.setString(3, usuario.getCpf());
+            sql.setString(4, usuario.getSenha());
+            sql.setString(5, usuario.getCrm());
+            sql.setString(6, usuario.getEstadoCrm());
+            sql.setString(7, usuario.getAutorizado());
+            sql.setInt(8, Integer.valueOf(usuario.getIdEspecialidade()));
+            sql.setInt(9, Integer.valueOf(usuario.getId()));
 
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
     }
 
-    public void Excluir(Medico usuario) throws Exception {
+    public void Excluir(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM medico WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(usuario.getId()));
+            sql.setInt(1, Integer.valueOf(id));
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

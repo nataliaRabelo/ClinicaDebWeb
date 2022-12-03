@@ -19,7 +19,7 @@ public class Medico extends Usuario{
     private String autorizado;
     private String idespecialidade;
     
-    public Medico(String id, String nome, String crm, String estadocrm, String cpf, String senha, String autorizado, String especialidade){
+    public Medico(String id, String nome, String cpf, String senha, String crm, String estadocrm, String autorizado, String especialidade){
         super(id, nome, cpf, senha);
         this.crm = crm;
         this.estadocrm = estadocrm;
@@ -27,12 +27,16 @@ public class Medico extends Usuario{
         this.idespecialidade = especialidade;
     }
     
-    public Medico(String nome, String crm, String estadocrm, String cpf, String senha, String autorizado, String especialidade){
+    public Medico(String nome, String cpf, String senha, String crm, String estadocrm, String autorizado, String especialidade){
         super(nome, cpf, senha);
         this.crm = crm;
         this.estadocrm = estadocrm;
         this.autorizado = autorizado;
         this.idespecialidade = especialidade;
+    }
+
+    public Medico() {
+        
     }
     
     public String getCrm(){
