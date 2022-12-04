@@ -17,10 +17,10 @@
         <link rel="shortcut icon" href="#">
         <title>Registro de Paciente</title>
         <ul class="nav-bar">
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/RegistroPaciente">Registro</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Login">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Logout">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>
         </ul>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
         <link rel="stylesheet" href="css/style4.css">

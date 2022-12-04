@@ -61,7 +61,7 @@ public class RegistroMedico extends HttpServlet {
         if (usuario != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
             rd.forward(request, response);
 
         } else {

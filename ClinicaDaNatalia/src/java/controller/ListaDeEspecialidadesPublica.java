@@ -21,8 +21,8 @@ import model.Especialidade;
  *
  * @author natyn
  */
-@WebServlet(name = "ListaDeEspecialidades", urlPatterns = {"/ListaDeEspecialidades"})
-public class ListaDeEspecialidades extends HttpServlet {
+@WebServlet(name = "ListaDeEspecialidadesPublica", urlPatterns = {"/ListaDeEspecialidadesPublica"})
+public class ListaDeEspecialidadesPublica extends HttpServlet {
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -41,7 +41,7 @@ public class ListaDeEspecialidades extends HttpServlet {
             try {
                 ArrayList<Especialidade> listaDeEspecialidades = especialidadeDAO.ListaDeEspecialidades();
                 request.setAttribute("listaDeEspecialidades", listaDeEspecialidades);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeEspecialidades.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeEspecialidadesPublica.jsp");
                 rd.forward(request, response);
                 
                 

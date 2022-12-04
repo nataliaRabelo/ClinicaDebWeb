@@ -18,8 +18,8 @@
         <ul class="nav-bar">
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/AreaDoPaciente">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Logout</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConvenios">Convenios</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidades">Especialidades</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>
     </ul>
     <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1 class="display-1">Bem-vindo, paciente. O que deseja fazer?</h1></font></div>
         <div align="center" class="span3">

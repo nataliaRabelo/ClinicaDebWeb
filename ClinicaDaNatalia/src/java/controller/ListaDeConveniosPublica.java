@@ -21,8 +21,8 @@ import model.TipoPlano;
  *
  * @author natyn
  */
-@WebServlet(name = "ListaDeConvenios", urlPatterns = {"/ListaDeConvenios"})
-public class ListaDeConvenios extends HttpServlet {
+@WebServlet(name = "ListaDeConveniosPublica", urlPatterns = {"/ListaDeConveniosPublica"})
+public class ListaDeConveniosPublica extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -40,7 +40,7 @@ public class ListaDeConvenios extends HttpServlet {
             try {
                 ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
                 request.setAttribute("listaDePlanos", listaDePlanos);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConvenios.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConveniosPublica.jsp");
                 rd.forward(request, response);
                 
                 
