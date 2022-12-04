@@ -18,14 +18,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
-        <title>Editar Paciente</title>
+        <title>Editar Administrador</title>
         <a href="/ClinicaDaNatalia/"><button style="background: #fff; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Voltar</button></a>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
     </head>
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
-                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Editar paciente</h1></font></div>
+                <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Editar administrador</h1></font></div>
                     <form action="EditarAdministrador" method="POST">
                     <input type="hidden" name="id" value="<%=request.getAttribute("id")%>"/>
                      <div class="mb-3">

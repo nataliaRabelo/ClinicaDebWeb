@@ -8,6 +8,7 @@ package controller;
 import DAO.AdministradorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,10 +30,13 @@ public class ExcluirAdministrador extends HttpServlet {
             AdministradorDAO admDAO = new AdministradorDAO();
             String id =  request.getParameter("id");
             admDAO.Excluir(id);
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+            rd.forward(request, response);
 
         } catch (Exception ex) {
             throw new RuntimeException("Falha no post");
         }
+                
     }
 
 

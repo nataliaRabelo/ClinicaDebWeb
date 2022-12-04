@@ -61,13 +61,13 @@ public class RegistroAdministrador extends HttpServlet {
         try {
             usuarioDAO.Inserir(usuario);
         } catch (Exception ex) {
-            throw new RuntimeException("Falha na query para Logar");
+            throw new RuntimeException(ex.getMessage());
         }
 
         if (usuario != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
-            RequestDispatcher rd = request.getRequestDispatcher("/AreaDoAdministrador.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
             rd.forward(request, response);
 
         } else {

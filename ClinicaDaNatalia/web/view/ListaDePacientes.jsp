@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <div align="center" class="span3">
-              <a href="/ClinicaDaNatalia/RegistroMedico"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Novo paciente</button></a>
+              <a href="/ClinicaDaNatalia/RegistroPaciente"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Novo paciente</button></a>
             </div>
                 <%
                     ArrayList<Paciente> listaDePacientes = (ArrayList<Paciente>) request.getAttribute("pacientes");
