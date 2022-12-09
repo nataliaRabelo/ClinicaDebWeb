@@ -75,7 +75,7 @@ public class TipoPlanoDAO {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir comentario) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

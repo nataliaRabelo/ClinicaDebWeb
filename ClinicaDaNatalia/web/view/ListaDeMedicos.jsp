@@ -109,6 +109,9 @@
                         out.print("<form action=\"ExcluirMedico\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ medico.getId()+"\">Excluir</button>");
                         out.print("</form>");
+                        out.print("<form action=\"Autorizar\"\"\" method=\"post\">");
+                        out.print("<button name=\"id\" value=\""+ medico.getId()+"\">Autorizar</button>");
+                        out.print("</form>");
                         out.print("</td>");
                         %>
                     </tr>

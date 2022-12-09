@@ -97,7 +97,7 @@ public class EspecialidadeDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (ListaDeEspecialidades) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

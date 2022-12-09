@@ -57,11 +57,13 @@
                         String descricao = consulta.getDescricao();
                         String realizada = consulta.getRealizada();
                         String idmedico = consulta.getMedico();
-                        String idpaciente = consulta.getIdPaciente();
-
+                        
                 %>
             <tbody>
                     <tr>
+                       <td>
+                            <%= id%>
+                        </td>
                         <td>
                             <%= data%>
                         </td>

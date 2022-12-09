@@ -4,15 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/WEB-INF/web.xml</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ExcluirEspecialidade.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/index.html</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/RegistroConvenio.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/Medico.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RegistroMedico.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeConsultas.jsp</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/EditarEspecialidade.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RegistroAdministrador.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConsultas.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/AreaDoMedico.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ExcluirConsulta.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeEspecialidadesPublica.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/EspecialidadeDAO.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/MarcacaoConsulta.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeExames.java</file>
@@ -39,17 +42,16 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/EditarConsulta.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/MarcacaoConsulta.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeMedicos.jsp</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConveniosPublica.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/RegistroConvenio.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/EditarAdministrador.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/UsuarioLogado.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/Logout.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/Conexao.java</file>
-            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/Registro.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/index.css</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/TipoExame.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/Administrador.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConvenios.java</file>
-            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/Registro.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/AdministradorDAO.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/nbproject/build-impl.xml</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/AreaDoMedico.java</file>
@@ -77,9 +79,11 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ExcluirAdministrador.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/RealizarConsulta.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/EditarPaciente.jsp</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeConveniosPublica.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/Paciente.java</file>
-            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeEspecialidades.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/MedicoDAO.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeEspecialidades.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeEspecialidadesPublica.jsp</file>
         </group>
     </open-files>
 </project-private>
