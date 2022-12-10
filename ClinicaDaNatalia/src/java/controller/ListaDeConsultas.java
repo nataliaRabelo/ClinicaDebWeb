@@ -35,7 +35,7 @@ public class ListaDeConsultas extends HttpServlet {
             throws ServletException, IOException {
             ConsultaDAO consultaDAO = new ConsultaDAO();
             // pegando os parâmetros do request
-            //String idtipoplano = request.getParameter("idtipoplano");
+            String idmedico = request.getParameter("idmedico");
             try {
                 ArrayList<Consulta> todasAsConsultas = consultaDAO.ListaDeConsultas();
                 ArrayList<Consulta> listaDeConsultas = new ArrayList();
@@ -44,7 +44,7 @@ public class ListaDeConsultas extends HttpServlet {
                         listaDeConsultas.add(consulta);
                     }if(UsuarioLogado.getInstancia().getCrm() != null && consulta.getIdMedico().equals(UsuarioLogado.getInstancia().getId())){
                         listaDeConsultas.add(consulta);
-                    }if(UsuarioLogado.getInstancia().getCrm() == null && UsuarioLogado.getInstancia().getIdTipoPlano() == null){
+                    }if(UsuarioLogado.getInstancia().getCrm() == null && UsuarioLogado.getInstancia().getIdTipoPlano() == null && consulta.getIdMedico().equals(idmedico)){
                         listaDeConsultas.add(consulta);
                     }
                     

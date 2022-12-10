@@ -25,13 +25,13 @@
     <body>
         <div class="container">
             <div class="col-sm-6 offset-3 mt-5">
-             <%
-             String msgError = (String) request.getAttribute("msgError");
-             if ((!msgError.isEmpty()) && (msgError != null)) {%>
+                <%
+                    String msgError = (String) request.getAttribute("msgError");
+                    if ((msgError != null) && (!msgError.isEmpty())) {%>
                 <div class="alert alert-danger" role="alert">
                     <%= msgError%>
                 </div>
-             <% }%>
+                <% }%>
                 <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h1>Login</h1></font></div>
                 <form action="Login" method="POST">
                     <div class="mb-3">

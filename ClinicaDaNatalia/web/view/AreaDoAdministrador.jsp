@@ -32,7 +32,7 @@
         <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h3 class="display-1">Serviços</h3></font></div>
          <div align="center" class="span3">
               <a href="/ClinicaDaNatalia/ListaDeEspecialidades"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Especialidades</button></a>
-              <a href="/ClinicaDaNatalia/ListaDeConsultas"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Consultas</button></a>
+              <a href="/ClinicaDaNatalia/SelecionarMedico"><button style="background: #FFFAFA; border-radius: 6px; padding: 15px; cursor: pointer; color: #008AAF; border: none; font-size: 16px;">Consultas</button></a>
          </div>
         <div align="center"><font face="Trebuchet MS" color="#FFFAFA"><h3 class="display-1">Parcerias</h3></font></div>
          <div align="center" class="span3">
