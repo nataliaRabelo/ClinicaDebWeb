@@ -52,6 +52,8 @@ public class MarcacaoConsulta extends HttpServlet {
             throws ServletException, IOException {
         MedicoDAO medicoDAO = new MedicoDAO();
         ArrayList<Medico> listaDeMedicos = medicoDAO.ListaDeMedicos();
+        String msgError = request.getParameter("msgError");
+        request.setAttribute("msgError", msgError);
         request.setAttribute("listaDeMedicos", listaDeMedicos);
         RequestDispatcher rd = request.getRequestDispatcher("/view/MarcacaoConsulta.jsp");
         rd.forward(request, response);
@@ -72,22 +74,33 @@ public class MarcacaoConsulta extends HttpServlet {
         String hora = request.getParameter("hora");
         String idmedico = request.getParameter("idmedico");
         String dataInteira = data + " " + hora;
-        Consulta consulta = new Consulta(dataInteira, "", idmedico, UsuarioLogado.getInstancia().getId());
         ConsultaDAO consultaDAO = new ConsultaDAO();
-        try {
-            consultaDAO.Inserir(consulta);
-        } catch (Exception ex) {
-            throw new RuntimeException("Falha na query para marcar consulta");
+        ArrayList<Consulta> consultas = consultaDAO.ListaDeConsultas();
+         Consulta consulta = null;
+        int count = 0;
+        for(Consulta consulta2 : consultas){
+            String[] dataSplitada = consulta2.getData().split(" "); 
+            if(consulta2.getIdMedico().equals(idmedico) && data.equals(dataSplitada[0])){
+               count++;
+            }
+        }
+        if(count < 2){
+            consulta = new Consulta(dataInteira, "", idmedico, UsuarioLogado.getInstancia().getId());
         }
         if (consulta != null) {
+            try {
+                consultaDAO.Inserir(consulta);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex.getMessage());
+            }
             HttpSession session = request.getSession();
             session.setAttribute("consulta", consulta);
             RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
             rd.forward(request, response);
-
-        } else {
-            request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/MarcacaoConsulta.jsp");
+        }else {
+            String msgError = "Este médico já possui o máximo de consultas para este dia. Tente outro dia ou outro médico.";
+            request.setAttribute("msgError", msgError);
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
             rd.forward(request, response);
         }
     }

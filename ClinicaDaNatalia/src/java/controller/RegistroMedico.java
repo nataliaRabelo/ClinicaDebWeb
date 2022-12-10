@@ -55,12 +55,12 @@ public class RegistroMedico extends HttpServlet {
         try {
             medicoDAO.Inserir(usuario);
         } catch (Exception ex) {
-            throw new RuntimeException(ex.getMessage());
+            request.setAttribute("msgError", "Algo não foi registrado corretamente: " + ex.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+            rd.forward(request, response);
         }
 
         if (usuario != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("usuario", usuario);
             RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
             rd.forward(request, response);
 

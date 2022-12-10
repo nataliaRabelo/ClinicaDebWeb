@@ -13,13 +13,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
-        <title>Marcação de consulta</title>
+        <title>Selecionar medico</title>
         <link href="bootstrap/bootstrap.min.css"  rel="stylesheet"> 
         <link rel="stylesheet" href="css/style4.css">
         <link rel="stylesheet" href="view/index.css">
         <ul class="nav-bar">
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/AreaDoAdministrador">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>
     </ul>

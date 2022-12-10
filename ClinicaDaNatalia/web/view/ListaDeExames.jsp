@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="view/table.css">
         <ul class="nav-bar">
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/AreaDoPaciente">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>
     </ul>

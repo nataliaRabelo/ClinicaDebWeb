@@ -34,7 +34,6 @@ public class ListaDeConsultas extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ConsultaDAO consultaDAO = new ConsultaDAO();
-            // pegando os parâmetros do request
             String idmedico = request.getParameter("idmedico");
             try {
                 ArrayList<Consulta> todasAsConsultas = consultaDAO.ListaDeConsultas();

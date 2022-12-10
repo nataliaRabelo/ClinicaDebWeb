@@ -19,9 +19,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Administrador;
 import model.Paciente;
 import model.TipoPlano;
 import model.Usuario;
+import model.UsuarioLogado;
 
 /**
  *
@@ -53,15 +55,22 @@ public class RegistroPaciente extends HttpServlet {
         try {
             pacienteDAO.Inserir(usuario);
         } catch (Exception ex) {
-            throw new RuntimeException("Falha na query para Logar");
+            request.setAttribute("msgError", "Algo não foi registrado corretamente: " + ex.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+            rd.forward(request, response);
         }
 
         if (usuario != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("usuario", usuario);
-            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
-            rd.forward(request, response);
-
+            Administrador administrador = (Administrador) session.getAttribute("administrador");
+            if(administrador == null){
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
+                rd.forward(request, response);
+            }else{
+                session.setAttribute("usuario", usuario);
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+                rd.forward(request, response);
+            }
         } else {
             request.setAttribute("msgError", "Algo não foi registrado corretamente.");
             RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroPaciente.jsp");
