@@ -67,18 +67,20 @@ public class EditarMedico extends HttpServlet {
                 MedicoDAO medicoDAO = new MedicoDAO();
             try {
                 medicoDAO.Alterar(medico);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex.getMessage());
-            }
-            if (medico != null) {
+                if (medico != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("medico", medico);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
 
-            } else {
-                request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-                RequestDispatcher rd = request.getRequestDispatcher("/view/EditarMedico.jsp");
+                } else {
+                    request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/EditarMedico.jsp");
+                    rd.forward(request, response);
+                }
+            } catch (Exception ex) {
+                request.setAttribute("msgError", "Algo não foi registrado corretamente: " + ex.getMessage());
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
             }
         }

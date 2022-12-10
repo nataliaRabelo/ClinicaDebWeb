@@ -32,6 +32,9 @@
             <thead>
                 <tr>
                     <th>
+                        Id
+                    </th>
+                    <th>
                         Data
                     </th>
                     <th>

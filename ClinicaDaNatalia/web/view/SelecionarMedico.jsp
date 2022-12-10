@@ -38,7 +38,7 @@
 
                         for (Medico medico : listaDeMedicos) {
                             out.println("<option value= '"+medico.getId()+"'>");
-                            out.println(medico.getNome() + " - " + medico.getNomeEspecialidade(medico.getId()));
+                            out.println(medico.getNome() + " - " + medico.getNomeEspecialidade(medico.getIdEspecialidade()));
                             out.println("</option>");
                         }
 %>

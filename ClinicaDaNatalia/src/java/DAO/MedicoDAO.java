@@ -60,8 +60,8 @@ public class MedicoDAO {
             }
             return medico;
 
-        } catch (SQLException e) {
-            throw new RuntimeException("Query de select (get) incorreta");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

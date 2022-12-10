@@ -73,12 +73,13 @@ public class Medico extends Usuario{
     public String getNomeEspecialidade(String idespecialidade){
         EspecialidadeDAO especialidadeDao = new EspecialidadeDAO(); 
         ArrayList<Especialidade> especialidades = especialidadeDao.ListaDeEspecialidades();
+        String nomeEespecialidade = "";
         for(Especialidade especialidade : especialidades){
-            if(especialidade.getId().equals(idespecialidade)){
-                return especialidade.getDescricao();
+            if(Integer.valueOf(especialidade.getId()).equals(Integer.valueOf(idespecialidade))){
+                nomeEespecialidade = especialidade.getDescricao();
             }
         }
-        return null;
+        return nomeEespecialidade;
     }
     
 }

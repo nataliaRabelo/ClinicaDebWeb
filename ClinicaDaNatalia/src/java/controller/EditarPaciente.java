@@ -37,15 +37,6 @@ import model.UsuarioLogado;
 @WebServlet(name = "EditarPaciente", urlPatterns = {"/EditarPaciente/*"})
 public class EditarPaciente extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,7 +72,9 @@ public class EditarPaciente extends HttpServlet {
             try {
                 pacienteDAO.Alterar(paciente);
             } catch (Exception ex) {
-                throw new RuntimeException(ex.getMessage());
+                request.setAttribute("msgError", "Algo não foi registrado corretamente.");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp\n" + ex.getMessage());
+                rd.forward(request, response);
             }
             if (paciente != null) {
                 HttpSession session = request.getSession();
@@ -91,7 +84,7 @@ public class EditarPaciente extends HttpServlet {
 
             } else {
                 request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-                RequestDispatcher rd = request.getRequestDispatcher("/view/EditarPaciente.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/RegistroPaciente.jsp");
                 rd.forward(request, response);
             }
         }
