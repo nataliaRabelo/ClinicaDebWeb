@@ -96,10 +96,12 @@
                         out.print("<form action=\"ExcluirPaciente\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ paciente.getId()+"\">Excluir</button>");
                         out.print("</form>");
-                        out.print("<form action=\"Autorizar\"\"\" method=\"post\">");
+                        out.print("<form action=\"AutorizarPaciente\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ paciente.getId()+"\">Autorizar</button>");
                         out.print("</form>");
-                        out.print("</td>");
+                        out.print("<form action=\"DesautorizarPaciente\"\"\" method=\"post\">");
+                        out.print("<button name=\"id\" value=\""+ paciente.getId()+"\">Desautorizar</button>");
+                        out.print("</form>");
                         out.print("</td>");
                         %>
                     </tr>

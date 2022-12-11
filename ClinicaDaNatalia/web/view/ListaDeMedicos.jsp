@@ -46,7 +46,10 @@
                         Crm
                     </th>
                     <th>
-                        estado CRM
+                        Autorizado
+                    </th>
+                    <th>
+                        Estado CRM
                     </th>
                     <th>
                         Id especialidade
@@ -70,6 +73,7 @@
                         String cpf = medico.getCpf();
                         String senha = medico.getSenha();
                         String crm = medico.getCrm();
+                        String autorizado = medico.getAutorizado();
                         String estadoCrm = medico.getEstadoCrm();
                         String idEspecialidade = medico.getIdEspecialidade();
                         String especialidade = medico.getNomeEspecialidade(idEspecialidade);
@@ -93,6 +97,9 @@
                             <%= crm%>
                         </td>
                         <td>
+                            <%= autorizado%>
+                        </td>
+                        <td>
                             <%= estadoCrm%>
                         </td>
                         <td>
@@ -109,8 +116,11 @@
                         out.print("<form action=\"ExcluirMedico\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ medico.getId()+"\">Excluir</button>");
                         out.print("</form>");
-                        out.print("<form action=\"Autorizar\"\"\" method=\"post\">");
+                        out.print("<form action=\"AutorizarMedico\"\"\" method=\"post\">");
                         out.print("<button name=\"id\" value=\""+ medico.getId()+"\">Autorizar</button>");
+                        out.print("</form>");
+                        out.print("<form action=\"DesautorizarMedico\"\"\" method=\"post\">");
+                        out.print("<button name=\"id\" value=\""+ medico.getId()+"\">Desautorizar</button>");
                         out.print("</form>");
                         out.print("</td>");
                         %>

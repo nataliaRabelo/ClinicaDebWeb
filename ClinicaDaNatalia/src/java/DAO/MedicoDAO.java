@@ -89,6 +89,34 @@ public class MedicoDAO {
             conexao.closeConexao();
         }
     }
+    
+    public void Autorizar(String id) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medico SET autorizado = ? WHERE id = ? ");
+            sql.setString(1, "S");
+            sql.setString(2, id);
+            sql.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+    
+    public void Desautorizar(String id) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE medico SET autorizado = ? WHERE id = ? ");
+            sql.setString(1, "N");
+            sql.setString(2, id);
+            sql.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            conexao.closeConexao();
+        }
+    }
 
     public void Excluir(String id) throws Exception {
         Conexao conexao = new Conexao();
