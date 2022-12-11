@@ -18,6 +18,10 @@ public class TipoPlano {
         this.id = id;
         this.descricao = descricao; 
     }
+
+    public TipoPlano(String descricao) {
+        this.descricao = descricao; 
+    }
     
     public String getId(){
         return this.id;

@@ -20,12 +20,12 @@ public class TipoPlanoDAO {
     public void Inserir(TipoPlano tipoPlano) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Comentarios (cometario, data, idusuario) VALUES (?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO tipoplano (descricao) VALUES (?)");
             sql.setString(1, tipoPlano.getDescricao());
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (comentario) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
