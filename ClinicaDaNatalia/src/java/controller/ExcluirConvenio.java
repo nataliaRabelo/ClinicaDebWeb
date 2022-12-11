@@ -8,6 +8,7 @@ package controller;
 import DAO.ConsultaDAO;
 import DAO.ExameDAO;
 import DAO.PacienteDAO;
+import DAO.TipoPlanoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -25,37 +26,44 @@ import model.Paciente;
  *
  * @author natyn
  */
-@WebServlet(name = "ExcluirPaciente", urlPatterns = {"/ExcluirPaciente"})
-public class ExcluirPaciente extends HttpServlet {
+@WebServlet(name = "ExcluirConvenio", urlPatterns = {"/ExcluirConvenio"})
+public class ExcluirConvenio extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+                try {
             ConsultaDAO consultaDAO = new ConsultaDAO();
             PacienteDAO pacienteDAO = new PacienteDAO();
             ExameDAO exameDAO = new ExameDAO();
-            String id =  request.getParameter("id");;
+            TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
+            String id =  request.getParameter("id");
             ArrayList<Consulta> consultas = consultaDAO.ListaDeConsultas();
             ArrayList<Exame> exames = exameDAO.ListaDeExames();
-            ArrayList<Consulta> consultasDoPaciente = new ArrayList();
-            for(int i= 0; i < consultas.size(); i++){
-                if(consultas.get(i).getIdPaciente().equals(id)){
-                    consultasDoPaciente.add(consultas.get(i));
+            ArrayList<Paciente> pacientes = pacienteDAO.ListaDePacientes();
+            ArrayList<Paciente> pacientesDoConvenio = new ArrayList();
+            for(int i= 0; i < pacientes.size(); i++){
+                if(pacientes.get(i).getIdtipoPlano().equals(id)){
+                    pacientesDoConvenio.add(pacientes.get(i));
                 }
             }
-            if(!(consultasDoPaciente.isEmpty())){
-                for(int j=0; j < consultasDoPaciente.size(); j++){
-                    for(int x = 0; x < exames.size(); x++){
-                        if(exames.get(x).getIdConsulta().equals(consultasDoPaciente.get(j).getId())){
-                            exameDAO.Excluir(exames.get(x).getId());
+            if(!(pacientesDoConvenio.isEmpty())){
+                for(int j=0; j < pacientesDoConvenio.size(); j++){
+                    for(int x = 0; x < consultas.size(); x++){
+                       for(int z = 0; z < exames.size(); z++){
+                           if(exames.get(z).getIdConsulta().equals(consultas.get(x).getId()) && consultas.get(x).getIdPaciente().equals(pacientesDoConvenio.get(j).getId())){
+                               exameDAO.Excluir(exames.get(z).getId());
+                           }
+                       }
+                        if(consultas.get(x).getIdPaciente().equals(pacientesDoConvenio.get(j).getId())){
+                            consultaDAO.Excluir(consultas.get(x).getId());
                         }
                     }
-                    consultaDAO.Excluir(consultasDoPaciente.get(j).getId());
+                    pacienteDAO.Excluir(pacientesDoConvenio.get(j).getId());
                 }
-                pacienteDAO.Excluir(id);
+                tipoPlanoDAO.Excluir(id);
             }else{
-               pacienteDAO.Excluir(id);
+               tipoPlanoDAO.Excluir(id);
             }
             RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
             rd.forward(request, response);

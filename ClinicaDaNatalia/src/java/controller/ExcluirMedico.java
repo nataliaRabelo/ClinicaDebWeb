@@ -53,6 +53,7 @@ public class ExcluirMedico extends HttpServlet {
                     }
                     consultaDAO.Excluir(consultasDoMedico.get(j).getId());
                 }
+                medicoDAO.Excluir(id);
             }else{
                medicoDAO.Excluir(id);
             }

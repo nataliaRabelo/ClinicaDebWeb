@@ -62,6 +62,7 @@ public class ExcluirEspecialidade extends HttpServlet {
                     }
                     medicoDAO.Excluir(medicosDaEspecialidade.get(j).getId());
                 }
+                especialidadeDAO.Excluir(id);
             }else{
                especialidadeDAO.Excluir(id);
             }

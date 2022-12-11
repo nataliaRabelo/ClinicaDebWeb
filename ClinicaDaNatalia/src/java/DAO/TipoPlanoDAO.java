@@ -69,11 +69,11 @@ public class TipoPlanoDAO {
         }
     }
 
-    public void Excluir(TipoPlano tipoPlano) throws Exception {
+    public void Excluir(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Comentarios WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(tipoPlano.getId()));
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM tipoplano WHERE ID = ? ");
+            sql.setInt(1, Integer.valueOf(id));
             sql.executeUpdate();
 
         } catch (SQLException e) {
