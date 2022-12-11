@@ -57,9 +57,9 @@ public class TipoPlanoDAO {
     public void Alterar(TipoPlano tipoPlano) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE tipoplano SET id = ?, descricao = ?");
-            sql.setString(1, tipoPlano.getId());
-            sql.setString(2, tipoPlano.getDescricao());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE tipoplano SET descricao = ? WHERE id = ?");
+            sql.setString(1, tipoPlano.getDescricao());
+            sql.setString(2, tipoPlano.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
