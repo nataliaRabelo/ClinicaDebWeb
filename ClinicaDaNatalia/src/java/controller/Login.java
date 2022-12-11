@@ -1,20 +1,11 @@
 package controller;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +16,6 @@ import javax.servlet.http.HttpSession;
 import model.Administrador;
 import model.Medico;
 import model.Paciente;
-import model.Usuario;
-import model.UsuarioLogado;
 
 /**
  *
@@ -71,7 +60,6 @@ public class Login extends HttpServlet {
                     if(!(resultado.getString("idtipoplano") == null)){
                         Paciente paciente = new Paciente(resultado.getString("id"),resultado.getString("nome"),
                         resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano") );
-                        UsuarioLogado.getInstancia().setPaciente(paciente);
                         HttpSession session = request.getSession();
                         session.setAttribute("paciente", paciente);
                         RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
@@ -80,7 +68,6 @@ public class Login extends HttpServlet {
                     else if(!(resultado.getString("crm") == null)){
                         Medico medico = new Medico(resultado.getString("id"),resultado.getString("nome"),resultado.getString("crm"), resultado.getString("estadocrm"),
                         resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano"));
-                        UsuarioLogado.getInstancia().setMedico(medico);
                         HttpSession session = request.getSession();
                         session.setAttribute("medico", medico);
                         RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
@@ -88,7 +75,6 @@ public class Login extends HttpServlet {
                     }else{
                         Administrador administrador = new Administrador(resultado.getString("id"),resultado.getString("nome"),
                         resultado.getString("cpf"),resultado.getString("senha"));
-                        UsuarioLogado.getInstancia().setAdmin(administrador);
                         HttpSession session = request.getSession();
                         session.setAttribute("administrador", administrador);
                         RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");

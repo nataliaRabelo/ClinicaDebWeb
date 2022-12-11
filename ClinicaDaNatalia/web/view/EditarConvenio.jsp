@@ -7,7 +7,6 @@
 <%@page import="model.Administrador"%>
 <%@page import="model.TipoPlano"%>
 <%TipoPlano tipoPlano = (TipoPlano) request.getAttribute("tipoPlano");%>
-<%@page import="model.UsuarioLogado"%>
 <%@page import="model.Paciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Medico"%>

@@ -5,7 +5,6 @@
 --%>
 <%@page import="model.Consulta"%>
 <%Consulta consulta = (Consulta) request.getAttribute("consulta");%>
-<%@page import="model.UsuarioLogado"%>
 <%@page import="model.Paciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Medico"%>

@@ -10,25 +10,15 @@ import DAO.MedicoDAO;
 import DAO.PacienteDAO;
 import DAO.TipoPlanoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Consulta;
-import model.Medico;
 import model.Paciente;
 import model.TipoPlano;
-import model.Usuario;
-import model.UsuarioLogado;
 
 /**
  *

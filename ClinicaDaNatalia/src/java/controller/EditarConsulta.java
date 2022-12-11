@@ -9,10 +9,7 @@ import DAO.ConsultaDAO;
 import DAO.MedicoDAO;
 import DAO.PacienteDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -21,12 +18,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Consulta;
 import model.Medico;
 import model.Paciente;
-import model.Usuario;
-import model.UsuarioLogado;
 
 /**
  *
@@ -81,15 +75,8 @@ public class EditarConsulta extends HttpServlet {
                 throw new RuntimeException("Falha na query para editar consulta");
             }
             if (consulta != null) {
-                if(UsuarioLogado.getInstancia().getCrm() != null){
-                   RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-                   rd.forward(request, response); 
-                }else{
-                    RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
-                    rd.forward(request, response);
-                }
-                
-
+                RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+                rd.forward(request, response); 
             } else {
                 request.setAttribute("msgError", "Algo não foi registrado corretamente.");
                 RequestDispatcher rd = request.getRequestDispatcher("/view/EditarConsulta.jsp");

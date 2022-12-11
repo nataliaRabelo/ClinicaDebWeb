@@ -1,3 +1,4 @@
+<%@page import="model.Usuario"%>
 <%@page import="model.Medico"%>
 <%@page import="model.UsuarioLogado"%>
 <%@page import="java.util.ArrayList"%>
@@ -49,7 +50,6 @@
                 </tr>
             </thead>
                 <%
-                    UsuarioLogado usuarioLogado = (UsuarioLogado) request.getAttribute("usuariologado");
                     ArrayList<Consulta> listaDeConsultas = (ArrayList<Consulta>) request.getAttribute("listaDeConsultas");
                     if(listaDeConsultas.isEmpty()){
                         out.print("<h1>Sua lista de consultas está vazia! D:</h1>");
@@ -80,7 +80,8 @@
                             <%= idmedico%>
                         </td>
                         <%
-                            if(usuarioLogado.getCrm() != null){
+                            Usuario usuario = (Usuario) request.getAttribute("usuariologado");
+                            if(usuario != null && usuario.getClass() == Medico.class){
                                 out.print("<td>");
                                 if(consulta.getRealizada().equals("S")){
                                     out.print("<form action=\"EditarConsulta\"\"\" method=\"get\">");

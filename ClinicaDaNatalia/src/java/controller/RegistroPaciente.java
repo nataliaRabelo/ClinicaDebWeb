@@ -6,11 +6,9 @@ package controller;
  * and open the template in the editor.
  */
 
-import DAO.AdministradorDAO;
 import DAO.PacienteDAO;
 import DAO.TipoPlanoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,8 +20,6 @@ import javax.servlet.http.HttpSession;
 import model.Administrador;
 import model.Paciente;
 import model.TipoPlano;
-import model.Usuario;
-import model.UsuarioLogado;
 
 /**
  *

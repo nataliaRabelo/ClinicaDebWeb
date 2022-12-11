@@ -1,6 +1,5 @@
 <%@page import="model.Exame"%>
 <%@page import="model.Medico"%>
-<%@page import="model.UsuarioLogado"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Consulta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -59,7 +58,6 @@
                 </tr>
             </thead>
                 <%
-                    UsuarioLogado usuarioLogado = (UsuarioLogado) request.getAttribute("usuariologado");
                     ArrayList<Exame> listaDeExames = (ArrayList<Exame>) request.getAttribute("listaDeExames");
                     if(listaDeExames.isEmpty()){
                         out.print("<h1>Sua lista de exames está vazia! D:</h1>");

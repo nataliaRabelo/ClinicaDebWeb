@@ -1,19 +1,8 @@
 package controller;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import DAO.AdministradorDAO;
 import DAO.ConsultaDAO;
 import DAO.MedicoDAO;
-import DAO.PacienteDAO;
-import DAO.TipoPlanoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,12 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Medico;
-import model.Paciente;
-import model.TipoPlano;
-import model.Usuario;
-import java.text.SimpleDateFormat;
 import model.Consulta;
-import model.UsuarioLogado;
+import model.Paciente;
 
 /**
  *
@@ -74,6 +59,8 @@ public class MarcacaoConsulta extends HttpServlet {
         String hora = request.getParameter("hora");
         String idmedico = request.getParameter("idmedico");
         String dataInteira = data + " " + hora;
+        HttpSession session = request.getSession();
+        Paciente paciente = (Paciente) session.getAttribute("paciente");
         ConsultaDAO consultaDAO = new ConsultaDAO();
         ArrayList<Consulta> consultas = consultaDAO.ListaDeConsultas();
          Consulta consulta = null;
@@ -85,7 +72,7 @@ public class MarcacaoConsulta extends HttpServlet {
             }
         }
         if(count < 2){
-            consulta = new Consulta(dataInteira, "", idmedico, UsuarioLogado.getInstancia().getId());
+            consulta = new Consulta(dataInteira, "", idmedico, paciente.getId());
         }
         if (consulta != null) {
             try {
@@ -93,8 +80,6 @@ public class MarcacaoConsulta extends HttpServlet {
             } catch (Exception ex) {
                 throw new RuntimeException(ex.getMessage());
             }
-            HttpSession session = request.getSession();
-            session.setAttribute("consulta", consulta);
             RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
             rd.forward(request, response);
         }else {
