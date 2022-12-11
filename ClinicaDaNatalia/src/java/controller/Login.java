@@ -57,30 +57,35 @@ public class Login extends HttpServlet {
                 ResultSet resultado = sql.executeQuery();
                 resultado.last();
                 if (resultado.getRow() > 0) {
-                    if(!(resultado.getString("idtipoplano") == null)){
-                        Paciente paciente = new Paciente(resultado.getString("id"),resultado.getString("nome"),
-                        resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano") );
-                        HttpSession session = request.getSession();
-                        session.setAttribute("paciente", paciente);
-                        RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
-                        rd.forward(request, response);
-                    }
-                    else if(!(resultado.getString("crm") == null)){
-                        Medico medico = new Medico(resultado.getString("id"),resultado.getString("nome"),resultado.getString("crm"), resultado.getString("estadocrm"),
-                        resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano"));
-                        HttpSession session = request.getSession();
-                        session.setAttribute("medico", medico);
-                        RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
-                        rd.forward(request, response);
-                    }else{
+                    if(resultado.getString("autorizado") == null){
                         Administrador administrador = new Administrador(resultado.getString("id"),resultado.getString("nome"),
                         resultado.getString("cpf"),resultado.getString("senha"));
                         HttpSession session = request.getSession();
                         session.setAttribute("administrador", administrador);
                         RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                         rd.forward(request, response);
+                    }else if(resultado.getString("autorizado").equals("S")){
+                        if(!(resultado.getString("idtipoplano") == null)){
+                            Paciente paciente = new Paciente(resultado.getString("id"),resultado.getString("nome"),
+                            resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano") );
+                            HttpSession session = request.getSession();
+                            session.setAttribute("paciente", paciente);
+                            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
+                            rd.forward(request, response);
+                        }
+                        else if(!(resultado.getString("crm") == null)){
+                            Medico medico = new Medico(resultado.getString("id"),resultado.getString("nome"),resultado.getString("crm"), resultado.getString("estadocrm"),
+                            resultado.getString("cpf"),resultado.getString("senha"),resultado.getString("autorizado"),resultado.getString("idtipoplano"));
+                            HttpSession session = request.getSession();
+                            session.setAttribute("medico", medico);
+                            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
+                            rd.forward(request, response);
+                        }
+                    }else{
+                        request.setAttribute("msgError", "Usuário não autorizado");
+                        RequestDispatcher rd = request.getRequestDispatcher("view/Login.jsp");
+                        rd.forward(request, response);
                     }
-
                 } else {
                     request.setAttribute("msgError", "Usuário e/ou senha incorretos");
                     RequestDispatcher rd = request.getRequestDispatcher("view/Login.jsp");
@@ -101,15 +106,5 @@ public class Login extends HttpServlet {
 
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
