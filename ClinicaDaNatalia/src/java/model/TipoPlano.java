@@ -22,6 +22,10 @@ public class TipoPlano {
     public TipoPlano(String descricao) {
         this.descricao = descricao; 
     }
+
+    public TipoPlano() {
+        
+    }
     
     public String getId(){
         return this.id;

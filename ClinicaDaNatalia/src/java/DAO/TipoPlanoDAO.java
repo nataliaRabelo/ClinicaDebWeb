@@ -31,12 +31,13 @@ public class TipoPlanoDAO {
         }
     }
 
-    public TipoPlano get(TipoPlano tipoPlano) throws Exception {
+    public TipoPlano get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Comentarios WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(tipoPlano.getId()));
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM tipoplano WHERE ID = ? ");
+            sql.setInt(1, Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
+            TipoPlano tipoPlano = new TipoPlano();
             if (resultado != null) {
                 while (resultado.next()) {
                     tipoPlano.setId(resultado.getString("ID"));
@@ -47,7 +48,7 @@ public class TipoPlanoDAO {
             return tipoPlano;
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (get comentario) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
@@ -56,12 +57,13 @@ public class TipoPlanoDAO {
     public void Alterar(TipoPlano tipoPlano) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Comentarios SET cometario = ?, data = ?, idusuario = ?, senha = ?  WHERE ID = ? ");
-            sql.setString(1, tipoPlano.getDescricao());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE tipoplano SET id = ?, descricao = ?");
+            sql.setString(1, tipoPlano.getId());
+            sql.setString(2, tipoPlano.getDescricao());
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar comentario) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

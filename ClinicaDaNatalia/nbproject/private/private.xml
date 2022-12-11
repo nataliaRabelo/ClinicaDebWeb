@@ -32,6 +32,7 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/TipoPlano.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/TipoExameDAO.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/TipoPlanoDAO.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/EditarConvenio.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/RegistroEspecialidade.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/table.css</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/AreaDoAdministrador.jsp</file>
@@ -41,6 +42,7 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeExames.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/model/Usuario.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/EditarConsulta.java</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/EditarEspecialidade.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/MarcacaoConsulta.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeMedicos.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ListaDeConveniosPublica.java</file>
@@ -76,7 +78,7 @@
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/AreaDoPaciente.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/ConsultaDAO.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/ListaDeAdministradores.jsp</file>
-            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/DAO/Filtro.txt</file>
+            <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/EditarConvenio.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/web/view/AreaDoPaciente.jsp</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/ExcluirAdministrador.java</file>
             <file>file:/C:/ClinicaDebWeb/ClinicaDaNatalia/src/java/controller/RealizarConsulta.java</file>
