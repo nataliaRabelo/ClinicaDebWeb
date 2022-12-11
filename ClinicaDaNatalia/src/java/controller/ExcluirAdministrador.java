@@ -26,7 +26,7 @@ public class ExcluirAdministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                try {
+        try {
             AdministradorDAO admDAO = new AdministradorDAO();
             String id =  request.getParameter("id");
             admDAO.Excluir(id);
