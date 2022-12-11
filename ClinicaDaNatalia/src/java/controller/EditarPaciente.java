@@ -77,8 +77,6 @@ public class EditarPaciente extends HttpServlet {
                 rd.forward(request, response);
             }
             if (paciente != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("paciente", paciente);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
 

@@ -18,6 +18,14 @@ public class Especialidade {
         this.id = id;
         this.descricao =  descricao;
     }
+
+    public Especialidade(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    public Especialidade() {
+        
+    }
     
     public String getId(){
         return this.id;

@@ -6,14 +6,15 @@ package controller;
  * and open the template in the editor.
  */
 
+import DAO.EspecialidadeDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Especialidade;
 
 /**
  *
@@ -33,6 +34,18 @@ public class RegistroEspecialidade extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String descricao = request.getParameter("descricao");
+        Especialidade especialidade = new Especialidade(descricao);
+        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+        try {
+            especialidadeDAO.Inserir(especialidade);
+        } catch (Exception ex) {
+            request.setAttribute("msgError", "Algo não foi registrado corretamente: " + ex.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+            rd.forward(request, response);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
+        rd.forward(request, response);
     }
 
 

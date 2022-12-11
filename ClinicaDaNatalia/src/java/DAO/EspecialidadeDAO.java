@@ -21,23 +21,24 @@ public class EspecialidadeDAO {
     public void Inserir(Especialidade especialidade) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO especialidade (id, descricao) VALUES (?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO especialidade (descricao) VALUES (?)");
             sql.setString(1, especialidade.getDescricao());
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (especialidade) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
     }
 
-    public Especialidade get(Especialidade especialidade) throws Exception {
+    public Especialidade get(String id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM especialidade WHERE ID = ? ");
-            sql.setInt(1, Integer.valueOf(especialidade.getId()));
+            sql.setInt(1, Integer.valueOf(id));
             ResultSet resultado = sql.executeQuery();
+            Especialidade especialidade = new Especialidade();
             if (resultado != null) {
                 while (resultado.next()) {
                     especialidade.setId(resultado.getString("ID"));
@@ -48,7 +49,7 @@ public class EspecialidadeDAO {
             return especialidade;
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (get especialidade) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
@@ -59,10 +60,11 @@ public class EspecialidadeDAO {
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE especialidade SET descricao = ? WHERE ID = ? ");
             sql.setString(1, especialidade.getDescricao());
+            sql.setString(2, especialidade.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar especialidade) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }
@@ -76,7 +78,7 @@ public class EspecialidadeDAO {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir especialidade) incorreta");
+            throw new RuntimeException(e.getMessage());
         } finally {
             conexao.closeConexao();
         }

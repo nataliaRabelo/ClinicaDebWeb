@@ -87,15 +87,6 @@
                                     out.print("<button name=\"id\" value=\""+ consulta.getId()+"\">Editar</button>");
                                 }
                                 out.print("</td>");
-                            }if(usuarioLogado.getCrm() == null && usuarioLogado.getIdTipoPlano() == null){
-                                out.print("<td>");
-                                out.print("<form action=\"EditarConsulta\"\"\" method=\"get\">");
-                                out.print("<button name=\"id\" value=\""+ consulta.getId()+"\">Editar</button>");
-                                out.print("</form>");
-                                out.print("<form action=\"ExcluirConsulta\"\"\" method=\"post\">");
-                                out.print("<button name=\"id\" value=\""+ consulta.getId()+"\">Excluir</button>");
-                                out.print("</form>");
-                                out.print("</td>");
                             }
                         %>
                     </tr>

@@ -68,14 +68,12 @@ public class EditarMedico extends HttpServlet {
             try {
                 medicoDAO.Alterar(medico);
                 if (medico != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("medico", medico);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
 
                 } else {
                     request.setAttribute("msgError", "Algo não foi registrado corretamente.");
-                    RequestDispatcher rd = request.getRequestDispatcher("/view/EditarMedico.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                     rd.forward(request, response);
                 }
             } catch (Exception ex) {

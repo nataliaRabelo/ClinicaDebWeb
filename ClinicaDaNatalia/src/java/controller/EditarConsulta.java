@@ -81,8 +81,6 @@ public class EditarConsulta extends HttpServlet {
                 throw new RuntimeException("Falha na query para editar consulta");
             }
             if (consulta != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("consulta", consulta);
                 if(UsuarioLogado.getInstancia().getCrm() != null){
                    RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoMedico.jsp");
                    rd.forward(request, response); 
