@@ -41,6 +41,11 @@ public class ListaDeExames extends HttpServlet {
                     }
                     
                 }
+                if(paciente!=null){
+                    request.setAttribute("usuariologado", paciente);
+                }if(medico!=null){
+                    request.setAttribute("usuariologado", medico);
+                }
                 request.setAttribute("listaDeExames", listaDeExames);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeExames.jsp");
                 rd.forward(request, response);

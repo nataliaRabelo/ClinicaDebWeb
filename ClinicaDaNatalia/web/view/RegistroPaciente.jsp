@@ -4,9 +4,11 @@
     Author     : natyn
 --%>
 
+<%@page import="model.Administrador"%>
 <%@page import="model.TipoPlano"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%Administrador administrador = (Administrador) request.getAttribute("administrador");%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -16,7 +18,12 @@
         <link rel="shortcut icon" href="#">
         <title>Registro de Paciente</title>
         <ul class="nav-bar">
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/">Home</a></li>
+            <%
+            if(administrador != null){
+                out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/ClinicaDaNatalia/AreaDoAdministrador\">Home</a></li>");
+            }else{
+                out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/ClinicaDaNatalia/\">Home</a></li>");
+            }%>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>

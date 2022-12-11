@@ -54,7 +54,7 @@ public class ListaDeConsultas extends HttpServlet {
                     request.setAttribute("usuariologado", paciente);
                 }else if(medico != null){
                     request.setAttribute("usuariologado", medico);
-                }else if(paciente != null){
+                }else if(administrador != null){
                     request.setAttribute("usuariologado", administrador);
                 }
                 RequestDispatcher rd = request.getRequestDispatcher("/view/ListaDeConsultas.jsp");

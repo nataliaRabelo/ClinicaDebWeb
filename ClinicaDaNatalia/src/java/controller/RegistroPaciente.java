@@ -31,6 +31,9 @@ public class RegistroPaciente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            Administrador administrador = (Administrador) session.getAttribute("administrador");
+            session.setAttribute("administrador", administrador);
             TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
             ArrayList<TipoPlano> listaDePlanos = tipoPlanoDAO.ListaDePlanos();
             request.setAttribute("listaDePlanos", listaDePlanos);
@@ -63,7 +66,7 @@ public class RegistroPaciente extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoPaciente.jsp");
                 rd.forward(request, response);
             }else{
-                session.setAttribute("usuario", usuario);
+                session.setAttribute("administrador", administrador);
                 RequestDispatcher rd = request.getRequestDispatcher("/view/AreaDoAdministrador.jsp");
                 rd.forward(request, response);
             }

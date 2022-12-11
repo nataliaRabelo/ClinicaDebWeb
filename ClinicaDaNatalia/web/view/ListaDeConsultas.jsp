@@ -1,8 +1,10 @@
+<%@page import="model.Paciente"%>
+<%@page import="model.Administrador"%>
 <%@page import="model.Usuario"%>
 <%@page import="model.Medico"%>
-<%@page import="model.UsuarioLogado"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Consulta"%>
+<%Usuario usuario = (Usuario) request.getAttribute("usuariologado");%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -18,7 +20,14 @@
         <link rel="stylesheet" href="view/index.css">
         <link rel="stylesheet" href="view/table.css">
         <ul class="nav-bar">
-            <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/AreaDoPaciente">Home</a></li>
+            <%
+            if(usuario.getClass() == Paciente.class){
+                out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/ClinicaDaNatalia/AreaDoPaciente\">Home</a></li>");
+            }else if(usuario.getClass() == Medico.class){
+                out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/ClinicaDaNatalia/AreaDoMedico\">Home</a></li>"); 
+            }else{
+                out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/ClinicaDaNatalia/AreaDoAdministrador\">Home</a></li>");
+            }%>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/Logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeConveniosPublica">Convenios</a></li>
             <li class="nav-item"><a class="nav-link" href="/ClinicaDaNatalia/ListaDeEspecialidadesPublica">Especialidades</a></li>
@@ -80,7 +89,6 @@
                             <%= idmedico%>
                         </td>
                         <%
-                            Usuario usuario = (Usuario) request.getAttribute("usuariologado");
                             if(usuario != null && usuario.getClass() == Medico.class){
                                 out.print("<td>");
                                 if(consulta.getRealizada().equals("S")){
